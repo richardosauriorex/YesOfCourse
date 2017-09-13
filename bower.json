@@ -1,0 +1,23 @@
+{
+  "name": "YesOfCourse",
+  "homepage": "https://github.com/richardosauriorex/YesOfCourse",
+  "authors": [
+    "richardosauriorex <richarm_zero@hotmail.com>"
+  ],
+  "description": "Application web for courses",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "v4.0.0-beta",
+    "animate.css": "3.5.2",
+    "froala": "2.6.5"
+  }
+}
