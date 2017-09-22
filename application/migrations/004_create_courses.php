@@ -9,7 +9,7 @@ class Migration_Create_courses extends CI_Migration {
 	}
 
 	public function up() {
-		$this->dbforge->addfield(array(
+		$this->dbforge->add_field(array(
 			'course_id' => array(
 				'type' => 'INT',
 				'default' => TRUE,
