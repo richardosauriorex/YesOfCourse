@@ -20,7 +20,7 @@ class Migration_Create_categories extends CI_Migration {
 				'constraint' => '255'
 			)
 		));
-		$this->dbforge->add_key('cateogry_id', TRUE);
+		$this->dbforge->add_key('category_id', TRUE);
         $this->dbforge->create_table('categories');
 	}
 
