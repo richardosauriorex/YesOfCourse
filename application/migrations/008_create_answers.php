@@ -24,11 +24,11 @@ class Migration_Create_answers extends CI_Migration {
 			'evaluation_id' => array(
 				'type' => 'INT',
 				'unsigned' => TRUE,
-				'default' => TRUE
+				'constraint' => '100'
 			),
 			'status_id' => array(
 	        'type' => 'INT',
-			'default' => TRUE,
+			'constraint' => '100',
 			'unsigned' => TRUE
 			)
 		));

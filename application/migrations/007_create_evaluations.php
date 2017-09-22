@@ -22,7 +22,8 @@ class Migration_Create_evaluations extends CI_Migration {
 			),
 			'lesson_id' => array(
 				'type' => 'INT',
-				'unsigned' => TRUE
+				'unsigned' => TRUE,
+				'constraint' => '100'
 			),
 		));
 

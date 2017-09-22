@@ -34,10 +34,12 @@ class Migration_Create_results extends CI_Migration {
 			'inscription_id' => array(
 					'type' => 'INT',
 					'unsigned' => TRUE,
+					'constraint' => '100'
 			),
 			'lesson_id' => array(
 				'type' => 'INT',
-				'unsigned' => TRUE
+				'unsigned' => TRUE,
+				'constraint' => '100'
 			)
 		));
 		$this->dbforge->add_key('result_id', TRUE);

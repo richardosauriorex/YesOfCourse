@@ -23,7 +23,7 @@ class Migration_Create_lessons extends CI_Migration {
 			),
 			'course_id' => array(
 				'type' => 'INT',
-				'default' => TRUE,
+				'constraint' => '100',
 				'unsigned' => TRUE
 			)
 		));
