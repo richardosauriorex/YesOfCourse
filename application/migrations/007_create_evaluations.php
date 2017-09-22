@@ -13,7 +13,7 @@ class Migration_Create_evaluations extends CI_Migration {
 			'evaluation_id' => array(
 				'type' => 'INT',
 				'unsigned' => TRUE,
-				'default' => TRUE,
+				'constraint' => '100',
 				'auto_increment' => TRUE
 			),
 			'question' => array(

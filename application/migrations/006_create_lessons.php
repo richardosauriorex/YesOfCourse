@@ -14,6 +14,7 @@ class Migration_Create_lessons extends CI_Migration {
 			'lesson_id' => array(
 				'type' => 'INT',
 				'unsigned' => TRUE,
+				'constraint' => '100',
 				'auto_increment' => TRUE
 			),
 			'lesson_description' => array(

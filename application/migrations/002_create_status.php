@@ -14,6 +14,7 @@ class Migration_Create_status extends CI_Migration {
 		'status_id' => array(
 	        'type' => 'INT',
 			'unsigned' => TRUE,
+			'constraint' => '100',
 			'auto_increment' => TRUE
 		),
 		'status_description' => array(
@@ -24,11 +25,11 @@ class Migration_Create_status extends CI_Migration {
 	));
 	$this->dbforge->add_key('status_id', TRUE);
 	$this->dbforge->create_table('status');
-	$this->db->query('ALTER TABLE users ADD FOREIGN KEY (status_id) REFERENCES status(status_id)');
+	/*$this->db->query('ALTER TABLE users ADD FOREIGN KEY (status_id) REFERENCES status(status_id)');*/
 	}
 
 	public function down() {
-		$this->db->query('ALTER TABLE users DROP FOREIGN KEY users_ibfk_1');
+		/*$this->db->query('ALTER TABLE users DROP FOREIGN KEY users_ibfk_1');*/
 		$this->dbforge->drop_table('status');
 	}
 

@@ -13,6 +13,7 @@ class Migration_Create_categories extends CI_Migration {
 			'category_id' => array(
 				'type' => 'INT',
 				'unsigned' => TRUE,
+				'constraint' => '100',
 				'auto_increment' => TRUE
 			),
 			'category_description' => array(

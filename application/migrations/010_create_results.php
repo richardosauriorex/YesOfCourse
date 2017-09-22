@@ -9,10 +9,11 @@ class Migration_Create_results extends CI_Migration {
 	}
 
 	public function up() {
-		$this->dbforge->add_field(
+		$this->dbforge->add_field(array(
 			'result_id' => array(
 				'type' => 'INT',
 				'unsigned' => TRUE,
+				'constraint' => '100',
 				'auto_increment' => TRUE
 			),
 			'number_questions' => array(

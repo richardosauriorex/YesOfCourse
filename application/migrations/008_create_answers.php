@@ -13,7 +13,7 @@ class Migration_Create_answers extends CI_Migration {
 			'answer_id' => array(
 				'type' => 'INT',
 				'unsigned' => TRUE,
-				'default' => TRUE,
+				'constraint' => '100',
 				'auto_increment' => TRUE
 			),
 			'answer' => array(
@@ -30,7 +30,7 @@ class Migration_Create_answers extends CI_Migration {
 	        'type' => 'INT',
 			'default' => TRUE,
 			'unsigned' => TRUE
-		)
+			)
 		));
 		$this->dbforge->add_key('answer_id', TRUE);
 		$this->dbforge->create_table('answers');

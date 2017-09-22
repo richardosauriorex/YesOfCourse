@@ -12,8 +12,8 @@ class Migration_Create_users extends CI_Migration {
 		$this->dbforge->add_field(array(
                         'user_id' => array(
                                 'type' => 'INT',
+                                'constraint' => '100',
                                 'unsigned' => TRUE,
-                                'default' => TRUE,
                                 'auto_increment' => TRUE
                         ),
                         'user_email' => array(

@@ -12,7 +12,7 @@ class Migration_Create_inscriptions extends CI_Migration {
 		$this->dbforge->add_field(array(
 				'inscription_id' => array(
 					'type' => 'INT',
-					'default' => TRUE,
+					'constraint' => '100',
 					'unsigned' => TRUE,
 					'auto_increment' => TRUE
 				),

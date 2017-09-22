@@ -13,14 +13,14 @@ class Migration_Create_reset_password extends CI_Migration {
 		'user_id' => array(
 			'type' => 'INT',
 			'unsigned' => TRUE,
-			'default' => TRUE,
-			'auto_increment' => TRUE
+			'constraint' => '100'
     	),
     	'reset_code' => array(
     		'type' => 'VARCHAR',
-    		'constraint' => '255'
+    		'constraint' => '255',
     		'null' => FALSE
-    	);
+    	)
+    	));
     	$this->dbforge->create_table('reset_password');
 	}
 
