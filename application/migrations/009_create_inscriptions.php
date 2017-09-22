@@ -16,19 +16,28 @@ class Migration_Create_inscriptions extends CI_Migration {
 					'unsigned' => TRUE,
 					'auto_increment' => TRUE
 				),
+				'aprobed_lessons' => array(
+					'type' => 'INT',
+					'constraint' => '11'
+				),
+				'reprobed_lessons' => array(
+					'type' => 'INT',
+					'constraint' => '11'
+				),
 				'user_id' => array(
 					'type' => 'INT',
 					'unsigned' => TRUE,
-					'default' => TRUE
+					'constraint' => '100'
 				),
 				'course_id' => array(
 					'type' => 'INT',
-					'default' => TRUE,
-					'unsigned' => TRUE
+					'unsigned' => TRUE,
+					'constraint' => '100'
 				),
 				'status_id' => array(
 			        'type' => 'INT',
-					'unsigned' => TRUE
+					'unsigned' => TRUE,
+					'constraint' => '100'
 				)
 		));
 		$this->dbforge->add_key('inscription_id', TRUE);
