@@ -16,8 +16,8 @@
     "tests"
   ],
   "dependencies": {
-    "bootstrap": "v4.0.0-beta",
-    "animate.css": "3.5.2",
-    "froala": "2.6.5"
+    "bootstrap":"4",
+    "font-awesome": "4.7",
+    "quill": "1.0"
   }
 }
