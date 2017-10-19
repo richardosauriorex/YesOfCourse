@@ -13,6 +13,7 @@ class Custom
 	public function layouts($view = '', $data = '')
 	{
 		$this->ext->load->view('layouts/_header.php');
+		$this->ext->load->view('layouts/_alerts.php');
 		$this->ext->load->view($view, $data);
 		$this->ext->load->view('layouts/_footer.php');
 	}
