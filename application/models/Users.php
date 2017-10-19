@@ -15,22 +15,14 @@ class Users extends CI_Model {
 		return $this->db->update('users', $values);
 	}
 	/*into user_id, return a row with all fields from users*/
-	public function get($id = '')
+	public function get($values = '')
 	{
-		$this->db->where('user_id', $id);
+		$this->db->where($values);
 		$this->db->limit(1);
 		$result = $this->db->get('users');
 		return $result->row();
 	}
 
-	public function login($user_email = '', $password = '')
-	{
-		$this->db->where('user_email', $user_email);
-		$this->db->where('password', $password);
-		$this->db->limit(1);
-		$result = $this->db->get('users');
-		return $result->row();
-	}
 }
 
 /* End of file Users.php */
