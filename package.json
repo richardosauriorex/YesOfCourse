@@ -1,0 +1,16 @@
+{
+  "name": "YesOfCourse",
+  "version": "1.0.0",
+  "description": "University project",
+  "main": "index.php",
+  "repository": "https://github.com/richardosauriorex/YesOfCourse.git",
+  "author": "richardosauriorex <richarm_zero@hotmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "quill": "^1.3.3",
+    "font-awesome" : "^4.7.0",
+    "bootstrap" : "^4.0.0.beta.2",
+    "jquery": "^3.2.1"
+  }
+}
+/* yarn install --modules-folder ./vendor --frozen-lockfile*/
