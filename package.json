@@ -13,4 +13,3 @@
     "jquery": "^3.2.1"
   }
 }
-/* yarn install --modules-folder ./vendor --frozen-lockfile*/
