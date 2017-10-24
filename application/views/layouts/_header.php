@@ -43,6 +43,9 @@
 				</div>
 			</li>
 			<!-- end dropdown categories -->
+			<li class="nav-item active">
+				<a class="nav-link" href="<?= site_url().'/test/';?>">Test</a>
+			</li>
 		</ul>
 		<!-- begin form search -->
 		<form class="form-inline my-2 my-lg-0">

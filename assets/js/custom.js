@@ -1,4 +1,4 @@
-	function ajax_cod(url = '', data = '') {
+	function request_ajax(url = '', data = '') {
 		var csrf = $("input[name|='security']").val();
 		data.security = csrf;
 		$.ajax({
@@ -8,16 +8,27 @@
 			data: data,
 		})
 		.done(function(data) {
-			custom_alert(data.hash, data.title, data.msg, data.color);
+			switch_function(data);			
 		})
 		.fail(function(data) {
-			custom_alert(data.hash, 'Error', 'Fallo la operación', 'alert-danger');	
+			msgAlert('Error', 'Fallo la operación', 'alert-danger');	
 		});	
 	}
 
-	function custom_alert(hash = '', title = '', msg = '', color = '') {
-		console.log(hash + title + msg + color);
-		$("input[name|='security']").val(hash);
+	function switch_function(data) {
+		$("input[name|='security']").val(data.csrf);
+		switch(data.type) {
+			case 'alert':
+				msgAlert(data.title, data.msg, data.bColor);		
+				break;
+			case 'table':
+				break;
+			case 'modal':
+				break;
+		}
+	}
+
+	function msgAlert(title = '', msg = '', color = '') {
 		$('#alert').addClass(color);
 		$('#alert').addClass('show');
 		$('#alert #title').html(title);
@@ -26,6 +37,5 @@
 			$('#alert').removeClass('show');
 			$('#alert').removeClass(color);
 			$('#alert').addClass('hide');
-		}, 2500);
-
+		}, 3000);
 	}

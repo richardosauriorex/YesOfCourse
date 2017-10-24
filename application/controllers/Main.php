@@ -37,34 +37,6 @@ class Main extends CI_Controller {
 	{
 		$this->custom->layouts('main/search');
 	}
-
-	public function test()
-	{
-		if($this->input->is_ajax_request()){
-			$data = [];
-			$data['hash'] = $this->security->get_csrf_hash();
-			$this->form_validation->set_rules('email', 'Correo electrónico', 'trim|required');
-			if ($this->form_validation->run() == TRUE) {
-				if ($this->input->post('email') == 'hola@hola.com') {
-					$data['msg'] = 'Existe en la base de datos';
-					$data['color'] = 'alert-success';	
-				}else{
-					$data['msg'] = 'No existe en la base de datos';
-					$data['color'] = 'alert-danger';
-				}
-			} else {
-				$data['msg'] = validation_errors();
-				$data['color'] = 'alert-danger';
-			}
-			echo json_encode($data);
-		}
-		
-	}
-
-	
-
-	
-
 }
 
 /* End of file Main.php */
