@@ -29,24 +29,26 @@ class Custom
 		echo json_encode($data);
 	}
 
-	public function allData($type = '',$queryResult = '', $queryId = '', $tableHead = '', $ignoreFields = '', $functions = '')
+	public function card($idElement = '', $queryResult = '', $queryId = '', $panelElements = '', $functions = '')
 	{
-		$data['type'] = $type;
+		$data = [];
+		$data['type'] = 'card';
 		$data['csrf'] = $this->ext->security->get_csrf_hash();
-		$data['queryResult'] = $queryResult; /*is a array*/
-		$data['queryId'] = $queryId;
-		$data['tableHead'] = $tableHead; /*is a array*/
-		$data['ignoreFields'] = $ignoreFields;
-		$data['functions'] = $functions; /*is a array*/
+		$data['idElement'] = $idElement; /*name of the div to contain*/
+		$data['queryResult'] = $queryResult; /*is assoc array*/
+		$data['queryId'] = $queryId; /*string with the name of the id table*/
+		$data['panelElements'] = $panelElements; /*is a array example ['title', 'description', 'status']*/
+		$data['functions'] = $functions; /*is assoc array example ['Mostrar' => 'btn-primary']*/
 		echo json_encode($data);
 	}
 
 	public function modal()
 	{
+		$data = [];
 		$data['type'] = 'table';
 		$data['csrf'] = $this->ext->security->get_csrf_hash();
 		$data['queryResult'] = $queryResult; /*is a assoc array*/
-		$data['fieldNames'] = $fieldNames; /*is a array*/
+		$data['fieldNames'] = $fieldNames; /*is a array with the id input to fill*/
 		echo json_encode($data);
 	}
 }
