@@ -8,6 +8,23 @@ class Main extends CI_Controller {
 		$this->custom->layouts('main/index');
 	}
 
+	public function up()
+	{
+		$this->load->library('migration');
+		if ($this->migration->version(12) === FALSE)
+			{
+            	show_error($this->migration->error_string());
+            }
+	}
+
+	public function down()
+	{
+		$this->load->library('migration');
+		if ($this->migration->version(0) === FALSE)
+			{
+            	show_error($this->migration->error_string());
+            }
+	}
 	public function register()
 	{
 		$this->custom->layouts('main/register');
