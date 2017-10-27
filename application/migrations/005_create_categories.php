@@ -23,6 +23,8 @@ class Migration_Create_categories extends CI_Migration {
 		));
 		$this->dbforge->add_key('category_id', TRUE);
         $this->dbforge->create_table('categories');
+        $this->db->query('ALTER TABLE categories ADD COLUMN create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP');
+		$this->db->query('ALTER TABLE categories ADD COLUMN update_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP');
 	}
 
 	public function down() {

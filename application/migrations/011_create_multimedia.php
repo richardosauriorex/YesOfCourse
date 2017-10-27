@@ -32,6 +32,8 @@ class Migration_Create_multimedia extends CI_Migration {
 		]);
 		$this->dbforge->add_key('multimedia_id', TRUE);
         $this->dbforge->create_table('multimedia');
+        $this->db->query('ALTER TABLE multimedia ADD COLUMN create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP');
+		$this->db->query('ALTER TABLE multimedia ADD COLUMN update_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP');
 	}
 
 	public function down() {

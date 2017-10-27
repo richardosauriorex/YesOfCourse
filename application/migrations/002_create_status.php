@@ -25,7 +25,8 @@ class Migration_Create_status extends CI_Migration {
 	));
 	$this->dbforge->add_key('status_id', TRUE);
 	$this->dbforge->create_table('status');
-	/*$this->db->query('ALTER TABLE users ADD FOREIGN KEY (status_id) REFERENCES status(status_id)');*/
+	$this->db->query('ALTER TABLE status ADD COLUMN create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP');
+    $this->db->query('ALTER TABLE status ADD COLUMN update_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP');
 	}
 
 	public function down() {

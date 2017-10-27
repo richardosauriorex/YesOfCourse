@@ -22,6 +22,8 @@ class Migration_Create_reset_password extends CI_Migration {
     	)
     	));
     	$this->dbforge->create_table('reset_password');
+    	$this->db->query('ALTER TABLE reset_password ADD COLUMN create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP');
+		$this->db->query('ALTER TABLE reset_password ADD COLUMN update_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP');
 	}
 
 	public function down() {

@@ -29,6 +29,8 @@ class Migration_Create_evaluations extends CI_Migration {
 
 		$this->dbforge->add_key('evaluation_id', TRUE);
 		$this->dbforge->create_table('evaluations');
+		$this->db->query('ALTER TABLE evaluations ADD COLUMN create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP');
+		$this->db->query('ALTER TABLE evaluations ADD COLUMN update_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP');
 	}
 
 	public function down() {

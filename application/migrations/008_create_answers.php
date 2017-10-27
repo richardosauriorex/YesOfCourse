@@ -34,6 +34,8 @@ class Migration_Create_answers extends CI_Migration {
 		));
 		$this->dbforge->add_key('answer_id', TRUE);
 		$this->dbforge->create_table('answers');
+		$this->db->query('ALTER TABLE answers ADD COLUMN create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP');
+		$this->db->query('ALTER TABLE answers ADD COLUMN update_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP');
 	}
 
 	public function down() {

@@ -43,6 +43,8 @@ class Migration_Create_courses extends CI_Migration {
 		));
 		$this->dbforge->add_key('course_id', TRUE);
         $this->dbforge->create_table('courses');
+        $this->db->query('ALTER TABLE courses ADD COLUMN create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP');
+		$this->db->query('ALTER TABLE courses ADD COLUMN update_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP');
 	}
 
 	public function down() {

@@ -17,6 +17,11 @@ class Migration_Create_lessons extends CI_Migration {
 				'constraint' => '100',
 				'auto_increment' => TRUE
 			),
+			'lesson_title' => array(
+				'type' => 'VARCHAR',
+				'constraint' => 255,
+				'null' => FALSE
+			),
 			'lesson_description' => array(
 				'type' => 'TEXT',
 				'null' => FALSE
@@ -29,6 +34,8 @@ class Migration_Create_lessons extends CI_Migration {
 		));
 		$this->dbforge->add_key('lesson_id', TRUE);
         $this->dbforge->create_table('lessons');
+        $this->db->query('ALTER TABLE lessons ADD COLUMN create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP');
+		$this->db->query('ALTER TABLE lessons ADD COLUMN update_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP');
 	}
 
 	public function down() {

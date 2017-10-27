@@ -36,7 +36,6 @@ class Migration_Create_foreign_keys extends CI_Migration {
 
 	public function down() {
 		$this->db->query('ALTER TABLE users DROP FOREIGN KEY users_ibfk_1');
-		$this->db->query('ALTER TABLE users DROP FOREIGN KEY users_ibfk_2');
 		$this->db->query('ALTER TABLE courses DROP FOREIGN KEY courses_ibfk_1');
 		$this->db->query('ALTER TABLE courses DROP FOREIGN KEY courses_ibfk_2');
 		$this->db->query('ALTER TABLE courses DROP FOREIGN KEY courses_ibfk_3');
@@ -50,10 +49,7 @@ class Migration_Create_foreign_keys extends CI_Migration {
 		$this->db->query('ALTER TABLE results DROP FOREIGN KEY results_ibfk_1');
 		$this->db->query('ALTER TABLE results DROP FOREIGN KEY results_ibfk_2');
 		$this->db->query('ALTER TABLE evaluations DROP FOREIGN KEY evaluations_ibfk_1');
-
-
-
-
+		$this->db->query('ALTER TABLE multimedia DROP FOREIGN KEY multimedia_ibfk_1');
 	}
 
 }

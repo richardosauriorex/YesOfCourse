@@ -44,6 +44,8 @@ class Migration_Create_results extends CI_Migration {
 		));
 		$this->dbforge->add_key('result_id', TRUE);
 		$this->dbforge->create_table('results');
+		$this->db->query('ALTER TABLE results ADD COLUMN create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP');
+		$this->db->query('ALTER TABLE results ADD COLUMN update_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP');
 	}
 
 	public function down() {

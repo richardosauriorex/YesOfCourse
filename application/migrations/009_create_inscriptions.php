@@ -42,6 +42,8 @@ class Migration_Create_inscriptions extends CI_Migration {
 		));
 		$this->dbforge->add_key('inscription_id', TRUE);
 		$this->dbforge->create_table('inscriptions');
+		$this->db->query('ALTER TABLE inscriptions ADD COLUMN create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP');
+		$this->db->query('ALTER TABLE inscriptions ADD COLUMN update_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP');
 	}
 
 	public function down() {

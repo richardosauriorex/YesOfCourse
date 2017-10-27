@@ -54,6 +54,8 @@ class Migration_Create_users extends CI_Migration {
                 ));
                 $this->dbforge->add_key('user_id', TRUE);
                 $this->dbforge->create_table('users');
+                $this->db->query('ALTER TABLE users ADD COLUMN create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP');
+                $this->db->query('ALTER TABLE users ADD COLUMN update_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP');
 	}
 
 	public function down() {
