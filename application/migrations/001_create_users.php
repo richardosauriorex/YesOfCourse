@@ -47,9 +47,8 @@ class Migration_Create_users extends CI_Migration {
                                 'null' => FALSE
                         ),
                         'status_id' => array(
-                                'type' => 'INT',
-                                'unsigned' => TRUE,
-                                'constraint' => '100'
+                        'type' => 'VARCHAR',
+                        'constraint' => '20'
                         )
                 ));
                 $this->dbforge->add_key('user_id', TRUE);

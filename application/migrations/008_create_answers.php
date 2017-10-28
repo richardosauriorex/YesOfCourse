@@ -27,9 +27,8 @@ class Migration_Create_answers extends CI_Migration {
 				'constraint' => '100'
 			),
 			'status_id' => array(
-	        'type' => 'INT',
-			'constraint' => '100',
-			'unsigned' => TRUE
+	        'type' => 'VARCHAR',
+			'constraint' => '20'
 			)
 		));
 		$this->dbforge->add_key('answer_id', TRUE);

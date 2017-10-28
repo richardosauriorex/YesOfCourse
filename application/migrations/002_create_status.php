@@ -12,10 +12,8 @@ class Migration_Create_status extends CI_Migration {
 	public function up() {
 		$this->dbforge->add_field(array(
 		'status_id' => array(
-	        'type' => 'INT',
-			'unsigned' => TRUE,
-			'constraint' => '100',
-			'auto_increment' => TRUE
+	        'type' => 'VARCHAR',
+			'constraint' => '20'
 		),
 		'status_description' => array(
 			'type' => 'VARCHAR',

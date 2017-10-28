@@ -36,9 +36,8 @@ class Migration_Create_courses extends CI_Migration {
 				'constraint' => '100'
             ),
             'status_id' => array(
-				'type' => 'INT',
-				'unsigned' => TRUE,
-				'constraint' => '100'
+	        'type' => 'VARCHAR',
+			'constraint' => '20'
 			)
 		));
 		$this->dbforge->add_key('course_id', TRUE);

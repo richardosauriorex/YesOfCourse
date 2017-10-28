@@ -35,10 +35,9 @@ class Migration_Create_inscriptions extends CI_Migration {
 					'constraint' => '100'
 				),
 				'status_id' => array(
-			        'type' => 'INT',
-					'unsigned' => TRUE,
-					'constraint' => '100'
-				)
+	       		'type' => 'VARCHAR',
+				'constraint' => '20'
+			)
 		));
 		$this->dbforge->add_key('inscription_id', TRUE);
 		$this->dbforge->create_table('inscriptions');
