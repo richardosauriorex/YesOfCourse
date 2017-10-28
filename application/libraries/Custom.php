@@ -51,5 +51,33 @@ class Custom
 		$data['fieldNames'] = $fieldNames; /*is a array with the id input to fill*/
 		echo json_encode($data);
 	}
+
+	public function sendEmail($emailDestiny = '', $subject = '', $message = '')
+	{
+ 			$this->load->library('email');
+            $config['protocol'] = 'smtp';
+            $config['smtp_crypto'] = 'ssl';
+            $config['smtp_host']= 'smtp.gmail.com';
+            $config['smtp_port']= 465;
+            $config['smtp_user']= 'testsendmail182@gmail.com'; /*this email is for test and may be changed*/
+            $config['smtp_pass']= 'testsendmail1820';
+            $config['smtp_timeout'] = 30;
+            $config['validate']= TRUE;
+            $config['charset']= 'utf-8';
+            $config['wordwrap'] = TRUE;
+            $config['mailtype'] = 'html';
+            $config['newline']= "\r\n";
+            $this->email->initialize($config);
+			$this->load->library('email', $config);
+			$this->email->from('testsendmail182@gmail.com','YesOfCourse');
+			$this->email->to($emailDestiny); /*email destinatary*/
+			$this->email->subject($subject); /*subject to mail*/
+			$this->email->message($message); /*this may be a html code*/
+			if ($this->email->send()) {
+				return TRUE;
+			} else {
+				return FALSE;
+			}		
+	}
 }
 ?>
