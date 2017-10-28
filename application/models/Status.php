@@ -36,7 +36,7 @@ class Status extends CI_Model {
 	public function set_status($table = '', $field_id = '', $id = '', $status_id = '')
 	{
 		$this->db->where($id_field, $id);
-		return $this->db->update($table, 'status_id' => $status_id);
+		return $this->db->update($table, ['status_id' => $status_id]);
 	}
 
 }

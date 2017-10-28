@@ -28,7 +28,7 @@ class Inscriptions extends CI_Model {
 	/*return select * from inscriptions*/
 	public function get_all_user($id)
 	{
-		$this->db->where('user_id', $id)
+		$this->db->where('user_id', $id);
 		$result = $this->db->get('inscriptions');
 		return $result->result();
 	}
