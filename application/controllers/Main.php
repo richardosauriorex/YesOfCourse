@@ -46,12 +46,14 @@ class Main extends CI_Controller {
 				'user_email' => $this->input->post('userEmail', TRUE),
 				'password' => $this->encryption->encrypt($this->input->post('password', TRUE)),
 				'authentication_code' => random_string('alnum', 16),
-				'status_id' => 'user0'
+				'status_id' => 'usr01'
 			];
-			/*$this->users->insert($values);
-			$this->custom->sendEmail($emailDestiny, $subject, $message);
-			*/
-			$title = '<i class="fa fa-thumb-up"></i>YesOfCourse';
+			$this->users->insert($values);
+			$id = $this->users->get(['user_email' => $values['user_email']]);
+			$subject = 'Bienvenid@ a YesOfCourse';
+			$message = 'Para activar su cuenta de click en el siguiente enlace:<br><a style="text-decoration:none;"href="'.site_url().'/main/validate/'.$id['user_id'].'/'.$values['aupthentication_code'].'">Activar cuenta</a>';
+			$this->custom->sendEmail($values['user_email'], $subject, $message);
+			$title = 'Bienvenido';
 			$msg = 'Se ha enviado un mensaje a su correo electrónico para continuar con su registro.';
 			$bColor = 'alert-success';
 			$this->custom->alert($title, $msg, $bColor);
@@ -66,6 +68,14 @@ class Main extends CI_Controller {
 	public function validate($user_id = '', $code = '')
 	{
 		$this->custom->layouts('main/validate_user');
+		$res = $this->users->get(['user_id' => $user_id, 'authentication_code' => $code]);
+		var_dump($res);
+		if (!empty($res)) {
+		$this->users->update($user_id, ['status_id' => 'usr02']);
+		$this->load->view('main/_activated');	
+		}else{
+		$this->load->view('main/_noactivated');	
+		}
 	}
 
 	public function login()
@@ -73,9 +83,9 @@ class Main extends CI_Controller {
 		$this->custom->layouts('main/login');
 	}
 
-	public function reset_password($user_id = '', $code = '')
+	public function utils($user_id = '', $code = '')
 	{
-		$this->custom->layouts('main/reset_password');
+		$this->custom->layouts('main/utils');
 	}
 
 	public function change_password($user_id = '', $reset_code = '')

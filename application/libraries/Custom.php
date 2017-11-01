@@ -54,10 +54,13 @@ class Custom
 
 	public function sendEmail($emailDestiny = '', $subject = '', $message = '')
 	{
- 			$this->load->library('email');
+            $txt = 
+            '<div style="background-color:#1E8449; border:1px solid #52BE80; margin: 50px 50px; border-radius: 5px; padding: 10px; color: white;font-family: "Indie Flower", cursive;">
+			<h3><strong>YesOfCourse:</strong></h3>
+			<h3>'.$message.'</h3>
+			</div>';
             $config['protocol'] = 'smtp';
-            $config['smtp_crypto'] = 'ssl';
-            $config['smtp_host']= 'smtp.gmail.com';
+            $config['smtp_host']= 'ssl://smtp.gmail.com';
             $config['smtp_port']= 465;
             $config['smtp_user']= 'testsendmail182@gmail.com'; /*this email is for test and may be changed*/
             $config['smtp_pass']= 'testsendmail1820';
@@ -67,17 +70,12 @@ class Custom
             $config['wordwrap'] = TRUE;
             $config['mailtype'] = 'html';
             $config['newline']= "\r\n";
-            $this->email->initialize($config);
-			$this->load->library('email', $config);
-			$this->email->from('testsendmail182@gmail.com','YesOfCourse');
-			$this->email->to($emailDestiny); /*email destinatary*/
-			$this->email->subject($subject); /*subject to mail*/
-			$this->email->message($message); /*this may be a html code*/
-			if ($this->email->send()) {
-				return TRUE;
-			} else {
-				return FALSE;
-			}		
+			$this->ext->load->library('email', $config);
+			$this->ext->email->from('testsendmail182@gmail.com','YesOfCourse');
+			$this->ext->email->to($emailDestiny); /*email destinatary*/
+			$this->ext->email->subject($subject); /*subject to mail*/
+			$this->ext->email->message($txt); /*this may be a html code*/
+			$this->ext->email->send();	
 	}
 }
 ?>

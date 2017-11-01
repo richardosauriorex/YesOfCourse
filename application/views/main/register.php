@@ -38,6 +38,7 @@
 			</div>
 		</div>
 	</div>
+	
 	<script>
 		$(function() {
 			$('#register').on('submit', function(event) {
@@ -48,7 +49,7 @@
 					lastMotherName : $('#nLastMotherName').val(),
 					userEmail : $('#nUserEmail').val(),
 					password : $('#nPassword').val()
-				}
+				};
 				var url = $('#register').attr('action');
 				request_ajax(url, data);
 			});

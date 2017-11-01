@@ -9,10 +9,10 @@ class Users extends CI_Model {
 		return $this->db->insert('users', $value);
 	}
 	/*into value = array associative with fields and user_id return true or false*/
-	public function update($value = '', $id = '')
+	public function update($id = '', $value = '')
 	{
 		$this->db->where('user_id', $id);
-		return $this->db->update('users', $values);
+		return $this->db->update('users', $value);
 	}
 	/*into user_id, return a row with all fields from users*/
 	public function get($values = '')
