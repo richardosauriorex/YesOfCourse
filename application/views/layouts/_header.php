@@ -1,11 +1,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <!-- include jquery -->
-<script src="<?php echo base_url()."vendor/jquery/dist/jquery.min.js";?>" ></script>
+<script src="<?= base_url()."vendor/jquery/dist/jquery.min.js";?>" ></script>
 <!-- include styles bootstrap v4 -->
-<link rel="stylesheet" href="<?php echo base_url()."vendor/bootstrap/dist/css/bootstrap.min.css";?>">
+<link rel="stylesheet" href="<?= base_url()."vendor/bootstrap/dist/css/bootstrap.min.css";?>">
 <!-- include font-awesome icons -->
-<link rel="stylesheet" href="<?php echo base_url()."vendor/font-awesome/css/font-awesome.min.css";?>">
+<link rel="stylesheet" href="<?= base_url()."vendor/font-awesome/css/font-awesome.min.css";?>">
+<link rel="stylesheet" href="<?= base_url()."vendor/quill/dist/quill.snow.css"; ?>">
+<link rel="stylesheet" href="<?= base_url().'assets/css/custom.css';?>">
 <!-- begin menu -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 	

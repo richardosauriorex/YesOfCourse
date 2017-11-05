@@ -41,30 +41,59 @@
 				</div>
 			</div>
 		</div>
+		<div class="container">
+			<div id="editor">
+				
+			</div>
+		</div>
+		<!-- Button trigger modal -->
+		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#images">
+		Launch demo modal
+		</button>
+		<!-- Modal -->
+		<div class="modal fade" id="images" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLongTitle">Imagenes</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-primary">Save changes</button>
+					</div>
+				</div>
+			</div>
+		</div>
 		<script>
-			$(function() {
-				$('#login').on('submit', function(event) {
-					event.preventDefault();
-					var url = $('#login').attr('action');
-					var email = $('#email').val();
-					var password = $('#password').val();
-					data = {};
-					data.email = email;
-					data.password = password;
-					request_ajax(url, data);
-					$('#exampleModal').modal('toggle');
-				});
-				function panel() {
-					var data = {};
-					data.idElement = 'panel';
-				var url = "<?= site_url().'/test/ajax_panel';?>"
-				request_ajax(url, data);
-				}
-				panel();
-				});
-			function panelMostrar(a) {
-				$('#exampleModal').modal('toggle');
-			}
+		$(function() {
+		$('#login').on('submit', function(event) {
+		event.preventDefault();
+		var url = $('#login').attr('action');
+		var email = $('#email').val();
+		var password = $('#password').val();
+		data = {};
+		data.email = email;
+		data.password = password;
+		request_ajax(url, data);
+		$('#exampleModal').modal('toggle');
+		});
+		function panel() {
+		var data = {};
+		data.idElement = 'panel';
+		var url = "<?= site_url().'/test/ajax_panel';?>"
+		request_ajax(url, data);
+		}
+		panel();
+		});
+		function panelMostrar(a) {
+		$('#exampleModal').modal('toggle');
+		}
 		</script>
 	</body>
 </html>

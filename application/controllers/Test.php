@@ -62,11 +62,7 @@ class Test extends CI_Controller {
 		}
 		
 	}
-
-	public function ajax_modal()
-	{
-		
-	}
+	
 }
 
 /* End of file Test.php */
