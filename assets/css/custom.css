@@ -1,3 +1,7 @@
 .ql-container {
-    height: 300px;
+    height: 700px;
+}
+.boxhead a {
+    color: #FFFFFF;
+    text-decoration: none;
 }

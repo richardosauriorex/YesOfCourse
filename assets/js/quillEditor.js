@@ -1,3 +1,4 @@
+/*toolbar options*/
 var toolbarOptions = [
         [{ 'font': [] }],
         ['bold', 'italic', 'underline', 'strike'],
@@ -10,8 +11,8 @@ var toolbarOptions = [
         ['link', 'image', 'video'],
         ['clean']
 ];
-
-this.quill = new Quill('#Editor', {
+/*config quill editor*/
+var quill = new Quill('#editor', {
         modules: {
                 toolbar: {
                         container: toolbarOptions,
@@ -23,14 +24,25 @@ this.quill = new Quill('#Editor', {
         },
         theme: 'snow'
 });
-
+/*handler image*/
 function imageHandler() {
         var range = this.quill.getSelection();
+        /*obtain url*/
         var value = prompt('What is the image URL');
         this.quill.insertEmbed(range.index, 'image', value, Quill.sources.USER);
 }
+/*funtion obtain list multimedia image*/
+
+/*function handler image*/
+var quillOnlyRead = new Quill('#quillRead',{modules:{toolbar:false},theme: 'snow'});
+quillOnlyRead.enable(false);
 
 $('#editor').on('focusout', function(event) {
         event.preventDefault();
-        console.log($('#editor').html());
+        var delta = quill.getContents();
+        var quillContent = JSON.stringify(delta.ops);
+        console.log(JSON.parse(quillContent));
+        quillOnlyRead.setContents(JSON.parse(quillContent));
+        quillOnlyRead.enable(false);
 });
+
