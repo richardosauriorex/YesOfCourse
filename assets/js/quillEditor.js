@@ -12,6 +12,8 @@ var toolbarOptions = [
         ['clean']
 ];
 /*config quill editor*/
+
+if ($('#editor').val() !== undefined) {
 var quill = new Quill('#editor', {
         modules: {
                 toolbar: {
@@ -23,7 +25,9 @@ var quill = new Quill('#editor', {
                 imageResize:{}
         },
         theme: 'snow'
-});
+});        
+};
+
 /*handler image*/
 function imageHandler() {
         var range = this.quill.getSelection();
@@ -34,8 +38,10 @@ function imageHandler() {
 /*funtion obtain list multimedia image*/
 
 /*function handler image*/
+if($('#quillRead').val() !== undefined){
 var quillOnlyRead = new Quill('#quillRead',{modules:{toolbar:false},theme: 'snow'});
 quillOnlyRead.enable(false);
+}
 
 $('#editor').on('focusout', function(event) {
         event.preventDefault();

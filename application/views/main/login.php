@@ -5,8 +5,8 @@
 	</head>
 	<body>
 		<div class="container">
-			<div class="jumbotron">
-				<h3 class=" text-center">Iniciar sesión</h3>
+			<div class="jumbotron bg-dark text-white">
+				<h1 class=" text-center">Iniciar sesión</h1>
 				<!-- begin form -->
 				<?php echo form_open('url', ['class' => 'was-validated', 'id' => 'formVal', 'novalidate']); ?>
 				<!-- begin input email -->

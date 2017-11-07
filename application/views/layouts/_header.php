@@ -30,6 +30,7 @@
 				<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 					<a class="dropdown-item" href="<?php echo site_url().'/main/login';?>">Iniciar sesión</a>
 					<a class="dropdown-item" href="<?php echo site_url().'/main/register';?>">Registrarse</a>
+					<a class="dropdown-item" href="<?php echo site_url().'/main/help';?>">Ayuda</a>
 				</div>
 			</li>
 			<!-- end dropdown categories -->
