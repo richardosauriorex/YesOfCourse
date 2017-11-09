@@ -9,7 +9,7 @@
 		<div class="jumbotron bg-dark text-white">
 			<div class="container">
 				<h2 class="text-center">Registrar</h2>
-				<?= form_open('main/regUser', ['id' => 'register', 'class' => 'container was-validated']); ?>
+				<?= form_open('register/regUser', ['id' => 'register', 'class' => 'container was-validated']); ?>
 				<div class="form-group">
 					<label>Nombre(s):</label>
 					<input type="text" class="form-control" id="nFirstName" required>

@@ -10,52 +10,41 @@
 <link rel="stylesheet" href="<?= base_url().'assets/css/custom.css';?>">
 <!-- begin menu -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-	
 	<a class="navbar-brand" href="#">YesOfCourse</a>
 	<!-- add collapsable menu -->
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 	<span class="navbar-toggler-icon"></span>
 	</button>
 	<!-- begin content menu -->
-	<div class="collapse navbar-collapse" id="navbarSupportedContent">
-		<ul class="navbar-nav mr-auto">
-			<li class="nav-item active">
-				<a class="nav-link" href="#">Inicio</a>
+	<div class="collapse navbar-collapse " id="navbarSupportedContent">
+		<ul class="navbar-nav ml-auto">
+			<li class="nav-item">
+				<a class="btn btn-primary btn-block" href="<?php echo site_url().'/login/';?>">Iniciar sesión</a>
 			</li>
-			<!-- begin dropdown categories -->
-			<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					Usuario
-				</a>
-				<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-					<a class="dropdown-item" href="<?php echo site_url().'/main/login';?>">Iniciar sesión</a>
-					<a class="dropdown-item" href="<?php echo site_url().'/main/register';?>">Registrarse</a>
-					<a class="dropdown-item" href="<?php echo site_url().'/main/help';?>">Ayuda</a>
-				</div>
+			<li class="nav-item">
+				<a class="btn btn-success btn-block" href="<?php echo site_url().'/register/';?>">Registrarse</a>
 			</li>
-			<!-- end dropdown categories -->
-			<!-- begin dropdown categories -->
-			<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					Categorias
-				</a>
-				<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-					<a class="dropdown-item" href="#">Informatica</a>
-					<a class="dropdown-item" href="#">Veterinaria</a>
-					<a class="dropdown-item" href="#">Contabilidad</a>
-				</div>
+			<li class="nav-item">
+				<a class="btn btn-warning btn-block" href="<?php echo site_url().'/help/';?>">Ayuda</a>
 			</li>
-			<!-- end dropdown categories -->
-			<li class="nav-item active">
+			<li class="nav-item">
+				<a class="btn btn-danger btn-block" href="<?= site_url().'/main/search';?>"><i class="fa fa-search"></i> Buscar</a>
+			</li>
+			<?php if ($this->session->has_userdata('user')): ?>
+			<li class="nav-item">
+				<a class="btn btn-primary btn-block" href="<?= site_url().'/user/' ?>">Perfil</a>
+			</li>
+			<li class="nav-item">
+				<a class="btn btn-success btn-block" href="<?= site_url().'/admincourses/' ?>">Administrar cursos</a>
+			</li>
+			<li class="nav-item">
+				<a class="btn btn-warning btn-block" href="<?= site_url().'/inscription/' ?>">Inscripciones</a>
+			</li>
+			<li class="nav-item">
 				<a class="nav-link" href="<?= site_url().'/test/';?>">Test</a>
 			</li>
+			<?php endif ?>
 		</ul>
-		<!-- begin form search -->
-		<form class="form-inline my-2 my-lg-0">
-			<input class="form-control" type="text" placeholder="Buscar...">
-			<button class="btn btn-dark my-2 my-sm-0" type="submit" ><i class="fa fa-search"></i> Buscar</button>
-		</form>
-		<!-- end form search -->
 	</div>
 	<!-- end content menu -->
 </nav>

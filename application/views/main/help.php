@@ -8,7 +8,7 @@
 	<div class="container">
 		<div class="jumbotron bg-dark text-white">
 			<h1 class="text-center">Ayuda al usuario</h1>
-			<?= form_open('main/helpMe', ['class' => 'container was-validated', 'id' => 'help']); ?>
+			<?= form_open('help/helpMe', ['class' => 'container was-validated', 'id' => 'help']); ?>
 			<div class="form-group">
 				<label>Correo electrónico:</label>
 				<input type="email" class="form-control" placeholder="Ingrese su correo electronico" id="email">
