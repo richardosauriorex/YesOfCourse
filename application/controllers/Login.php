@@ -22,7 +22,7 @@ class Login extends CI_Controller {
 			$res = $this->users->get(['user_email' => $user_email],1);
 			if (!empty($res)) {
 				if ($password == $this->encryption->decrypt($res->password)) {
-					/*$this->session->set_userdata('user', $res);*/
+					$this->session->set_userdata('user', $res);
 					$data['success'] = 'Bienvenid@ '.$res->first_name.' '.$res->last_name.' '.$res->last_mother_name;
 					$data['url'] = site_url().'/user/index';
 				}

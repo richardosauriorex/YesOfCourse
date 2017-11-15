@@ -38,7 +38,13 @@
 					email:email,
 					opt: opt
 				};
-				request_ajax(url, data);
+				request_ajax(url, data, function(response){
+					if(response.success != ''){
+						alertSuccess(response.success);
+					}else{
+						alertDanger(response.danger);
+					}
+				});
 			});
 		});
 	</script>

@@ -18,6 +18,7 @@
 	<!-- begin content menu -->
 	<div class="collapse navbar-collapse " id="navbarSupportedContent">
 		<ul class="navbar-nav ml-auto">
+			<?php if (!$this->session->has_userdata('user')): ?>
 			<li class="nav-item">
 				<a class="btn btn-primary btn-block" href="<?php echo site_url().'/login/';?>">Iniciar sesión</a>
 			</li>
@@ -27,9 +28,7 @@
 			<li class="nav-item">
 				<a class="btn btn-warning btn-block" href="<?php echo site_url().'/help/';?>">Ayuda</a>
 			</li>
-			<li class="nav-item">
-				<a class="btn btn-danger btn-block" href="<?= site_url().'/main/search';?>"><i class="fa fa-search"></i> Buscar</a>
-			</li>
+			<?php endif ?>
 			<?php if ($this->session->has_userdata('user')): ?>
 			<li class="nav-item">
 				<a class="btn btn-primary btn-block" href="<?= site_url().'/user/' ?>">Perfil</a>
@@ -41,11 +40,37 @@
 				<a class="btn btn-warning btn-block" href="<?= site_url().'/inscription/' ?>">Inscripciones</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="<?= site_url().'/test/';?>">Test</a>
+				<?= form_open('user/close_session',['id' => 'formClose']); ?>
+				<button class="btn btn-warning btn-block">Cerrar Sesión</button>
+				<?= form_close(); ?>
 			</li>
 			<?php endif ?>
+			<li class="nav-item">
+				<a class="btn btn-danger btn-block" href="<?= site_url().'/main/search';?>"><i class="fa fa-search"></i> Buscar</a>
+			</li>
 		</ul>
 	</div>
 	<!-- end content menu -->
 </nav>
 <!-- end menu -->
+<script>
+	$(document).ready(function() {
+		var closer = $('#formClose');
+		closer.on('submit', function(event) {
+			event.preventDefault();
+			/* Act on the event */
+			var data = {};
+			var url = closer.attr('action');
+			alertWarning(function(w){
+			if(w == true){
+			request_ajax(url,data,function(response){
+				alertSuccess(response.success);
+				setInterval(function(){ window.location = response.url; }, 3000);
+			});
+			}else{
+				alertDanger('La operación se cancelo.');
+			}
+			});
+		});
+	});
+</script>

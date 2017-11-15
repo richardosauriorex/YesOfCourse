@@ -14,10 +14,8 @@
 				<a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
 			</p>
 		</div>
-		
 	<script>
 		$(document).ready(function() {
-			alertInfo('Quien te quiere, Pos yo');
 		});
 	</script>
 	</body>

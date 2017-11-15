@@ -51,16 +51,15 @@
 					password : $('#nPassword').val()
 				};
 				var url = $('#register').attr('action');
-				request_ajax(url, data);
+				request_ajax(url, data, function(response){
+					if(data.success){
+						alertSuccess(data.success);
+					}else{
+						alertDanger(data.danger);
+					}
+				});
 			});
 		});
-		function obtainData(data){
-			if(data.success){
-				alertSuccess(data.success);
-			}else{
-				alertDanger(data.danger);
-			}
-		}
 	</script>
 </body>
 </html>

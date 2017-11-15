@@ -38,17 +38,16 @@
 					user_email: $('#email').val(),
 					password: $('#password').val()
 				};
-				request_ajax(url, data);
+				request_ajax(url, data, function(result){
+					if(result.success){
+					alertSuccess(result.success);
+					setInterval(function(){ window.location = result.url; }, 3000);
+					}else{
+					alertDanger(result.danger);
+					}
+				});
 			});
 		});
-		function obtainData(data){
-			if(data.success){
-				alertSuccess(data.success);
-				setInterval(function(){ window.location = data.url; }, 3000);
-			}else{
-				alertDanger(data.danger);
-			}
-		}
 		</script>
 
 	</body>

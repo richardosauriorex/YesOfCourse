@@ -1,4 +1,4 @@
-function request_ajax(url = '', data = '') {
+function request_ajax(url = '', data = '', callback) {
 	var csrf = $("input[name|='security']").val();
 	data.security = csrf;
 	$.ajax({
@@ -9,10 +9,11 @@ function request_ajax(url = '', data = '') {
 	})
 	.done(function(data) {
 		$("input[name|='security']").val(data.csrf);
-		obtainData(data);			
+/*		obtainData(data);*/
+		if (callback) callback(data);			
 	})
 	.fail(function() {
-		return false;	
+		alertDanger('Desconocido hasta para mi.');	
 	});	
 }
 

@@ -31,17 +31,17 @@ class Help extends CI_Controller {
 				/*send email with url for activated account*/
 				if ($opt == 'code_auth') {
 					$this->utils->sendCodeAut($email, $user->user_id, $user->authentication_code);
-					$data['alertMsg'] = 'Se ha enviado un correo electrónico para la activación de su cuenta';
+					$data['success'] = 'Se ha enviado un correo electrónico para la activación de su cuenta';
 				/*send email to reset password*/
 				}else if($opt == 'rest_pass'){
 					$this->utils->mailResetPass($email, $user->user_id);
-					$data['alertMsg'] = 'Se ha enviado un correo electrónico para restaurar su contraseña';
+					$data['success'] = 'Se ha enviado un correo electrónico para restaurar su contraseña';
 				}
 			}else{
-				$data['alertMsg'] = 'El correo electrónico que ingreso no se encuentra registrado.';
+				$data['danger'] = 'El correo electrónico que ingreso no se encuentra registrado.';
 			}
 		} else {
-			$data['alertMsg'] = validation_errors('<br>');
+			$data['danger'] = validation_errors('<br>');
 		}
 		echo json_encode($data);
 	}
