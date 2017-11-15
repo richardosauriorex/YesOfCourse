@@ -15,5 +15,10 @@
 			</p>
 		</div>
 		
+	<script>
+		$(document).ready(function() {
+			alertInfo('Quien te quiere, Pos yo');
+		});
+	</script>
 	</body>
 </html>

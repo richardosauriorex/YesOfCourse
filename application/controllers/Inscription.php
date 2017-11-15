@@ -6,7 +6,7 @@ class Inscription extends CI_Controller {
 	public function list()
 	{
 		/*show list inscription of the user*/
-		$this->custom->layouts('inscription/index');
+		$this->utils->layouts('inscription/index');
 	}
 	
 	public function proCreate()
@@ -22,19 +22,19 @@ class Inscription extends CI_Controller {
 	public function course($course_id = '')
 	{
 		/*show list lessons of the course*/
-		$this->custom->layouts('inscription/course');
+		$this->utils->layouts('inscription/course');
 	}
 
 	public function lesson($lesson_id = '')
 	{
 		/*show result of lesson and buttons to show lesson and realize evaluation*/
-		$this->custom->layouts('inscription/lesson');
+		$this->utils->layouts('inscription/lesson');
 	}
 
 	public function evaluation($lesson_id = '')
 	{
 		/*show the evaluation of the lesson*/
-		$this->custom->layouts('evaluation/index');
+		$this->utils->layouts('evaluation/index');
 	}
 
 	public function proEvaluation($value='')

@@ -5,13 +5,13 @@ class Main extends CI_Controller {
 
 	public function index()
 	{
-		$this->custom->layouts('main/index');
+		$this->utils->layouts('main/index');
 	}
 
 	public function search()
 	{
 		/*search view*/
-		$this->custom->layouts('main/search');
+		$this->utils->layouts('main/search');
 	}
 
 	public function proSearch()

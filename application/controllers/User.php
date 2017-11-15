@@ -6,13 +6,13 @@ class User extends CI_Controller {
 	public function index()
 	{
 		/*show view perfil with options*/
-		$this->custom->layouts('user/index');
+		$this->utils->layouts('user/perfil');
 	}
 
 	public function edit($user_id = '')
 	{
 		/*show form modify user information*/
-		$this->custom->layouts('user/edit');
+		$this->utils->layouts('user/edit');
 	}
 
 	public function proEdit()

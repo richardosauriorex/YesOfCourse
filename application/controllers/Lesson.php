@@ -6,7 +6,7 @@ class Lesson extends CI_Controller {
 	public function index($lesson_id = '')
 	{
 		/*show lessons*/
-		$this->custom->layouts('lesson/index');
+		$this->utils->layouts('lesson/index');
 	}
 
 }

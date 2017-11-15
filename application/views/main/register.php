@@ -54,6 +54,13 @@
 				request_ajax(url, data);
 			});
 		});
+		function obtainData(data){
+			if(data.success){
+				alertSuccess(data.success);
+			}else{
+				alertDanger(data.danger);
+			}
+		}
 	</script>
 </body>
 </html>

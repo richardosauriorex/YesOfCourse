@@ -6,7 +6,7 @@ class AdminEvaluations extends CI_Controller {
 	public function index()
 	{
 		/*show all evaluations with answers of the user lesson*/
-		$this->custom->layouts('adminevaluations/index');
+		$this->utils->layouts('adminevaluations/index');
 		$this->view->load('adminevaluations/createevaluation');
 		$this->view->load('adminevaluations/createanswer');
 		$this->view->load('adminevaluations/editanswer');

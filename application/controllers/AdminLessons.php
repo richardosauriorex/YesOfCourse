@@ -6,13 +6,13 @@ class AdminLessons extends CI_Controller {
 	public function index()
 	{
 		/*show all lessons own of the user course*/
-		$this->custom->layouts('adminlessons/index');
+		$this->utils->layouts('adminlessons/index');
 	}
 
 	public function create()
 	{
 		/*view create lesson*/
-		$this->custom->layouts('adminlessons/create');
+		$this->utils->layouts('adminlessons/create');
 	}
 
 	public function proCreate()
@@ -22,7 +22,7 @@ class AdminLessons extends CI_Controller {
 	public function edit($lesson_id)
 	{
 		/*view modify lesson*/
-		$this->custom->layouts('adminlessons/edit');
+		$this->utils->layouts('adminlessons/edit');
 	}
 
 	public function proEdit()

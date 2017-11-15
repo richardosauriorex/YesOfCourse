@@ -2,43 +2,52 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Status extends CI_Model {
-
-	/*into value = array associative with fields to insert*/
+private $table = 'status';
+	/*into value = array associative with fields to insert return true or false*/
 	public function insert($value = '')
 	{
-		return $this->db->insert('status', $value);
+		return $this->db->insert($this->table, $value);
 	}
 
-	/*into value = array associative with fields and status_id return true or false*/
-	public function update($value = '', $id = '')
+	/*into value = array associative with fields and id to table return true or false*/
+	public function update($where = '', $set = '')
 	{
-		$this->db->where('status_id', $id);
-		return $this->db->update('status', $values);
-	}
-
-	/*into user_id, return a row with all fields from status*/
-	public function get($id = '')
-	{
-		$this->db->where('status_id', $id);
+		$this->db->where($where);
 		$this->db->limit(1);
-		$result = $this->db->get('status');
-		return $result->row();
+		return $this->db->update($this->table, $set);
 	}
 
-	/*return select * from status*/
-	public function get_all()
+	/*into $where = [field => value ] and $limit = number and order by $order_by = field $direction = asc or desc to return result*/
+	public function get($where = '', $limit = '', $order_by = '',  $direction = '')
 	{
-		$result = $this->db->get('status');
+		if ($where != '') {
+			$this->db->where($where);	
+		}
+		if ($order_by != '' && $direction != '') {
+			$this->db->order_by($order_by, $direction);
+		}
+		if ($limit != '') {
+			if ($limit == 1) {
+				$this->db->limit($limit);
+				$result = $this->db->get($this->table);
+				return $result->row();		
+			}else{
+				$this->db->limit($limit);
+				$result = $this->db->get($this->table);
+				return $result->result();
+			}
+		}
+		$result = $this->db->get($this->table);
 		return $result->result();
 	}
 
-	/*update status in table where id_field = id*/
-	public function set_status($table = '', $field_id = '', $id = '', $status_id = '')
+	/*into $where = [field => value] to delete record*/
+	public function delete($where = '')
 	{
-		$this->db->where($id_field, $id);
-		return $this->db->update($table, ['status_id' => $status_id]);
+		$this->db->where($where);
+		$this->db->limit(1);
+		return $this->db->delete($this->table);
 	}
-
 }
 
 /* End of file Status.php */

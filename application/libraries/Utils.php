@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Custom
+class Utils
 {
 	protected $ext;
 
@@ -18,40 +18,22 @@ class Custom
 		$this->ext->load->view('layouts/_footer.php');
 	}
 
-	public function alert($title = '', $msg = '', $bColor = '')
+	public function mailResetPass($email = '', $user_id = '')
 	{
-		$data = [];
-		$data['type'] = 'alert';
-		$data['csrf'] = $this->ext->security->get_csrf_hash();
-		$data['title'] = $title;
-		$data['msg'] = $msg;
-		$data['bColor'] = $bColor;
-		echo json_encode($data);
+		$value = ['user_id' => $user_id, 'reset_code' => random_string('alnum', 16)];
+		$this->reset_password->insert($value);
+		$subject = 'Bienvenid@ a YesOfCourse';
+		$message = 'Para restaurar su contraseña de click en el siguiente enlace:<br><a style="text-decoration:none;"href="'.site_url().'/help/change_password/'.$value['user_id'].'/'.$value['reset_code'].'">Restaurar contraseña</a>';
+		$this->sendEmail($email, $subject, $message);
 	}
 
-	public function card($idElement = '', $queryResult = '', $queryId = '', $panelElements = '', $functions = '')
+	public function sendCodeAut($email, $id, $code)
 	{
-		$data = [];
-		$data['type'] = 'card';
-		$data['csrf'] = $this->ext->security->get_csrf_hash();
-		$data['idElement'] = $idElement; /*name of the div to contain*/
-		$data['queryResult'] = $queryResult; /*is assoc array*/
-		$data['queryId'] = $queryId; /*string with the name of the id table*/
-		$data['panelElements'] = $panelElements; /*is a array example ['title', 'description', 'status']*/
-		$data['functions'] = $functions; /*is assoc array example ['Mostrar' => 'btn-primary']*/
-		echo json_encode($data);
+		$subject = 'Bienvenid@ a YesOfCourse';
+		$message = 'Para activar su cuenta de click en el siguiente enlace:<br><a style="text-decoration:none;"href="'.site_url().'/register/validate/'.$id.'/'.$code.'">Activar cuenta</a>';
+		$this->sendEmail($email, $subject, $message);
 	}
-
-	public function modal()
-	{
-		$data = [];
-		$data['type'] = 'table';
-		$data['csrf'] = $this->ext->security->get_csrf_hash();
-		$data['queryResult'] = $queryResult; /*is a assoc array*/
-		$data['fieldNames'] = $fieldNames; /*is a array with the id input to fill*/
-		echo json_encode($data);
-	}
-
+	
 	public function sendEmail($emailDestiny = '', $subject = '', $message = '')
 	{
             $txt = 

@@ -2,51 +2,52 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Courses extends CI_Model {
-
-	/*into value = array associative with fields to insert*/
+private $table = 'courses';
+	/*into value = array associative with fields to insert return true or false*/
 	public function insert($value = '')
 	{
-		return $this->db->insert('courses', $value);
+		return $this->db->insert($this->table, $value);
 	}
 
-	/*into value = array associative with fields and course_id return true or false*/
-	public function update($value = '', $id = '')
+	/*into value = array associative with fields and id to table return true or false*/
+	public function update($where = '', $set = '')
 	{
-		$this->db->where('course_id', $id);
-		return $this->db->update('courses', $values);
+		$this->db->where($where);
+		$this->db->limit(1);
+		return $this->db->update($this->table, $set);
 	}
 
-	/*into user_id, return a row with all fields from course*/
-	public function get($id = '')
+	/*into $where = [field => value ] and $limit = number and order by $order_by = field $direction = asc or desc to return result*/
+	public function get($where = '', $limit = '', $order_by = '',  $direction = '')
 	{
-		$this->db->where('course_id', $id);
-		$result = $this->db->get('courses');
-		return $result->row();
-	}
-
-	/*return select * from courses where user_id = $id*/
-	public function get_all_user()
-	{
-		$this->db->where('user_id', $id);
-		$result = $this->db->get('courses');
+		if ($where != '') {
+			$this->db->where($where);	
+		}
+		if ($order_by != '' && $direction != '') {
+			$this->db->order_by($order_by, $direction);
+		}
+		if ($limit != '') {
+			if ($limit == 1) {
+				$this->db->limit($limit);
+				$result = $this->db->get($this->table);
+				return $result->row();		
+			}else{
+				$this->db->limit($limit);
+				$result = $this->db->get($this->table);
+				return $result->result();
+			}
+		}
+		$result = $this->db->get($this->table);
 		return $result->result();
 	}
 
-	/*return select * from courses*/
-	public function get_all($search = '', $category = '')
+	/*into $where = [field => value] to delete record*/
+	public function delete($where = '')
 	{
-		if (!empty($category)) {
-			$this->db->join('categories', 'courses.category_id = categories.category_id');
-			$this->db->where('category_description', $category);
-		}
-		if (!empty($search)) {
-			$this->db->like('course_name', $search);
-			$this->db->or_like('description', $search);
-		}
-		$result = $this->db->get('courses');
-		return $result->result();
+		$this->db->where($where);
+		$this->db->limit(1);
+		return $this->db->delete($this->table);
 	}
-
 }
 
 /* End of file Courses.php */

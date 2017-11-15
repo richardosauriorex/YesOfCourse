@@ -2,46 +2,52 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Multimedia extends CI_Model {
-
-	/*into value = array associative with fields to insert*/
+private $table = 'multimedia';
+	/*into value = array associative with fields to insert return true or false*/
 	public function insert($value = '')
 	{
-		return $this->db->insert('multimedia', $value);
+		return $this->db->insert($this->table, $value);
 	}
 
-	/*into value = array associative with fields and category_id return true or false*/
-	public function update($value = '', $id = '')
+	/*into value = array associative with fields and id to table return true or false*/
+	public function update($where = '', $set = '')
 	{
-		$this->db->where('multimedia_id', $id);
-		return $this->db->update('multimedia', $values);
+		$this->db->where($where);
+		$this->db->limit(1);
+		return $this->db->update($this->table, $set);
 	}
 
-	/*into user_id, return a row with all fields from multimedia*/
-	public function get($id = '')
+	/*into $where = [field => value ] and $limit = number and order by $order_by = field $direction = asc or desc to return result*/
+	public function get($where = '', $limit = '', $order_by = '',  $direction = '')
 	{
-		$this->db->where('multimedia_id', $id);
-		$result = $this->db->get('multimedia');
-		return $result->row();
-	}
-
-	/*return select * from multimedia*/
-	public function get_all_user($id)
-	{
-		$this->db->where('user_id', $id);
-		$this->db->order_by('file_type');
-		$result = $this->db->get('multimedia');
+		if ($where != '') {
+			$this->db->where($where);	
+		}
+		if ($order_by != '' && $direction != '') {
+			$this->db->order_by($order_by, $direction);
+		}
+		if ($limit != '') {
+			if ($limit == 1) {
+				$this->db->limit($limit);
+				$result = $this->db->get($this->table);
+				return $result->row();		
+			}else{
+				$this->db->limit($limit);
+				$result = $this->db->get($this->table);
+				return $result->result();
+			}
+		}
+		$result = $this->db->get($this->table);
 		return $result->result();
 	}
 
-	public function delete($id, $user_id)
+	/*into $where = [field => value] to delete record*/
+	public function delete($where = '')
 	{
-		$this->db->where('user_id', $user_id);
-		$this->db->where('multimedia_id', $id);
+		$this->db->where($where);
 		$this->db->limit(1);
-		return $this->db->delete('multimedia');
+		return $this->db->delete($this->table);
 	}
-	
-
 }
 
 /* End of file Multimedia.php */

@@ -2,43 +2,52 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Lessons extends CI_Model {
-
-	/*into value = array associative with fields to insert*/
+private $table = 'lessons';
+	/*into value = array associative with fields to insert return true or false*/
 	public function insert($value = '')
 	{
-		return $this->db->insert('lessons', $value);
+		return $this->db->insert($this->table, $value);
 	}
 
-	/*into value = array associative with fields and lesson_id return true or false*/
-	public function update($value = '', $id = '')
+	/*into value = array associative with fields and id to table return true or false*/
+	public function update($where = '', $set = '')
 	{
-		$this->db->where('lesson_id', $id);
-		return $this->db->update('lessons', $values);
+		$this->db->where($where);
+		$this->db->limit(1);
+		return $this->db->update($this->table, $set);
 	}
 
-	/*into lesson_id, return a row with all fields from lessons*/
-	public function get($id = '')
+	/*into $where = [field => value ] and $limit = number and order by $order_by = field $direction = asc or desc to return result*/
+	public function get($where = '', $limit = '', $order_by = '',  $direction = '')
 	{
-		$this->db->where('lesson_id', $id);
-		$result = $this->db->get('lessons');
-		return $result->row();
-	}
-
-	/*into course_id , return select * from lessons where course_id = course_id */
-	public function get_course_lessons($id_course = '')
-	{
-		$this->db->where('course_id', $id_course);
-		$result = $this->db->get('lessons');
+		if ($where != '') {
+			$this->db->where($where);	
+		}
+		if ($order_by != '' && $direction != '') {
+			$this->db->order_by($order_by, $direction);
+		}
+		if ($limit != '') {
+			if ($limit == 1) {
+				$this->db->limit($limit);
+				$result = $this->db->get($this->table);
+				return $result->row();		
+			}else{
+				$this->db->limit($limit);
+				$result = $this->db->get($this->table);
+				return $result->result();
+			}
+		}
+		$result = $this->db->get($this->table);
 		return $result->result();
 	}
 
-	public function delete($lesson_id ='')
+	/*into $where = [field => value] to delete record*/
+	public function delete($where = '')
 	{
-		$this->db->where('lesson_id', $id);
-		return $this->db->delete('lessons');
+		$this->db->where($where);
+		$this->db->limit(1);
+		return $this->db->delete($this->table);
 	}
-	
-
 }
 
 /* End of file Lessons.php */
