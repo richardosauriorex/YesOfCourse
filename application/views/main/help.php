@@ -5,7 +5,7 @@
 	<title>Ayuda al usuario</title>
 </head>
 <body>
-	<div class="container">
+	<div class="container mt-5">
 		<div class="jumbotron bg-dark text-white">
 			<h1 class="text-center">Ayuda al usuario</h1>
 			<?= form_open('help/helpMe', ['class' => 'container was-validated', 'id' => 'help']); ?>

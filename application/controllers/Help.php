@@ -22,7 +22,7 @@ class Help extends CI_Controller {
 	{
 		$data = [];
 		$data['csrf'] = $this->security->get_csrf_hash();
-		if (validPost()) {
+		if ($this->validPost()) {
 			$email = $this->input->post('email', TRUE);
 			$opt = $this->input->post('opt', TRUE);
 			/*query to know if exist user*/

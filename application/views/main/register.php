@@ -5,7 +5,7 @@
 	<title>Registro</title>
 </head>
 <body>
-	<div class="container">
+	<div class="container mt-5">
 		<div class="jumbotron bg-dark text-white">
 			<div class="container">
 				<h2 class="text-center">Registrar</h2>
