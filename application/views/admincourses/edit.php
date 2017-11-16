@@ -9,7 +9,7 @@
 			<div class="card">
 				<div class="card-body bg-dark text-white">
 					<h1 class="text-center">Editar curso</h1>
-					<?= form_open('admincourses/proCreate',['id' => 'formCreate', 'class' => 'container was-validated']); ?>
+					<?= form_open('admincourses/proEdit',['id' => 'formCreate', 'class' => 'container was-validated']); ?>
 					<input type="hidden" id="course_id" value="<?= $course->course_id ?>">
 					<div class="form-group">
 						<label>Nombre del curso:</label>

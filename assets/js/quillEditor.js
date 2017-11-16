@@ -27,7 +27,6 @@ var quill = new Quill('#editor', {
         theme: 'snow'
 });        
 };
-
 /*handler image*/
 function imageHandler() {
         var range = this.quill.getSelection();
@@ -40,15 +39,13 @@ function imageHandler() {
 /*function handler image*/
 if($('#quillRead').val() !== undefined){
 var quillOnlyRead = new Quill('#quillRead',{modules:{toolbar:false},theme: 'snow'});
+quillOnlyRead.setContents(JSON.parse(quillContent));
 quillOnlyRead.enable(false);
 }
 
-$('#editor').on('focusout', function(event) {
-        event.preventDefault();
+function obtainEditor(quill = '') {
         var delta = quill.getContents();
         var quillContent = JSON.stringify(delta.ops);
-        console.log(JSON.parse(quillContent));
-        quillOnlyRead.setContents(JSON.parse(quillContent));
-        quillOnlyRead.enable(false);
-});
+        return quillContent;
+}
 
