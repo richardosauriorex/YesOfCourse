@@ -27,15 +27,6 @@ class Main extends CI_Controller {
             	show_error($this->migration->error_string());
             }
 	}
-
-	public function down()
-	{
-		$this->load->library('migration');
-		if ($this->migration->version(0) === FALSE)
-			{
-            	show_error($this->migration->error_string());
-            }
-	}
 }
 
 /* End of file Main.php */

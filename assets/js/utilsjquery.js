@@ -18,17 +18,17 @@ function request_ajax(url = '', data = '', callback) {
 }
 
 function alertDanger(msg) {
-	$('.alertMsg').text(msg);
+	$('.alertMsg').html(msg);
 	$('#alertDanger').modal('show');
 }
 
 function alertSuccess(msg) {
-	$('.alertMsg').text(msg);
+	$('.alertMsg').html(msg);
 	$('#alertSuccess').modal('show');	
 }
 
 function alertInfo(msg) {
-	$('.alertMsg').text(msg);
+	$('.alertMsg').html(msg);
 	$('#alertInfo').modal('show');	
 }
 

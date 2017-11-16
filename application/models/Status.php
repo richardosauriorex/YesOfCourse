@@ -41,6 +41,18 @@ private $table = 'status';
 		return $result->result();
 	}
 
+	public function like($like = '', $not_like = '')
+	{
+		if(!empty($like)){
+			$this->db->like($like);
+		}
+		if(!empty($not_like)){
+			$this->db->not_like($not_like);	
+		}
+		$result = $this->db->get($this->table);
+		return $result->result();	
+	}
+
 	/*into $where = [field => value] to delete record*/
 	public function delete($where = '')
 	{

@@ -10,6 +10,7 @@ class Migration_Init_application extends CI_Migration {
 	}
 
 	public function up() {
+		/*initial status and unmodify*/
 		$this->db->query('INSERT INTO status(status_id, status_description) VALUES("usr00", "Administrador")');
 		$this->db->query('INSERT INTO status(status_id, status_description) VALUES("usr01", "Usuario inactivo")');
 		$this->db->query('INSERT INTO status(status_id, status_description) VALUES("usr02", "Usuario activo")');
@@ -21,10 +22,17 @@ class Migration_Init_application extends CI_Migration {
 		$this->db->query('INSERT INTO status(status_id, status_description) VALUES("ins01", "Inscripción activa")');
 		$this->db->query('INSERT INTO status(status_id, status_description) VALUES("ans00", "Respuesta correcta")');
 		$this->db->query('INSERT INTO status(status_id, status_description) VALUES("ans01", "Respuesta incorrecta")');
+		/*initial and example categories*/
+		$this->db->query('INSERT INTO categories(category_description) VALUES("Informatica")');
+		$this->db->query('INSERT INTO categories(category_description) VALUES("Administración")');
+		$this->db->query('INSERT INTO categories(category_description) VALUES("Contabilidad")');
+		$this->db->query('INSERT INTO categories(category_description) VALUES("Medicina")');
+		$this->db->query('INSERT INTO categories(category_description) VALUES("Agricola")');
 	}
 
 	public function down() {
 		$this->db->query('DELETE FROM status');
+		$this->db->query('DELETE FROM categories');
 	}
 
 }
