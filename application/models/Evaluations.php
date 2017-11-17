@@ -48,6 +48,12 @@ private $table = 'evaluations';
 		$this->db->limit(1);
 		return $this->db->delete($this->table);
 	}
+
+	public function count($where = '')
+	{
+		$this->db->where($where);
+		return $this->db->count_all_results($this->table);
+	}
 }
 
 /* End of file Evaluations.php */

@@ -3,43 +3,48 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Inscription extends CI_Controller {
 
-	public function list()
+	private $user;
+
+	public function __construct()
+	{
+		parent::__construct();
+		$this->user = $this->session->userdata('user');
+	}
+	public function index()
 	{
 		/*show list inscription of the user*/
 		$this->utils->layouts('inscription/index');
 	}
 	
-	public function proCreate()
+	public function proInscription()
 	{
-		/*process to create inscription to course*/
+		$data = [];
+		$data['csrf'] = $this->security->get_csrf_hash();
+		$this->form_validation->set_rules('courseId', 'Numero de registro curso', 'trim|required');
+		if ($this->form_validation->run() == TRUE) {
+			$course_id = $this->input->post('courseId', TRUE);
+			if ($this->session->has_userdata('user')) {
+			/*if exist a inscription in this course for this user don't insert*/
+			$existIns=$this->inscriptions->get(['user_id' => $this->user->user_id, 'course_id'=> $course_id],1);
+			if (empty($existIns )) {
+				$values = [
+				'aprobed_lessons' => $this->results->count(['qualification >=' => '8']),
+				'reprobed_lessons' => $this->results->count(['qualification <=' => '8']),
+				'course_id' => $course_id,
+				'user_id' => $this->user->user_id,
+				'status_id' => 'ins01'
+ 			];
+			$this->inscriptions->insert($values);	
+			}
+			$data['success'] = 'Se inscribio al curso. Disfrutelo';
+			}
+		}
+		echo json_encode($data);
 	}
 
 	public function proDelete()
 	{
 		/*process to delete inscription*/
-	}
-
-	public function course($course_id = '')
-	{
-		/*show list lessons of the course*/
-		$this->utils->layouts('inscription/course');
-	}
-
-	public function lesson($lesson_id = '')
-	{
-		/*show result of lesson and buttons to show lesson and realize evaluation*/
-		$this->utils->layouts('inscription/lesson');
-	}
-
-	public function evaluation($lesson_id = '')
-	{
-		/*show the evaluation of the lesson*/
-		$this->utils->layouts('evaluation/index');
-	}
-
-	public function proEvaluation($value='')
-	{
-		/*process to evaluation*/
 	}
 
 }

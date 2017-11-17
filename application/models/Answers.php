@@ -49,6 +49,12 @@ private $table = 'answers';
 		return $this->db->delete($this->table);
 	}
 
+	public function count($where = '')
+	{
+		$this->db->where($where);
+		return $this->db->count_all_results($this->table);
+	}
+
 }
 
 /* End of file Answers.php */

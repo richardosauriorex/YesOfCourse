@@ -18,7 +18,8 @@ class Migration_Create_inscriptions extends CI_Migration {
 				),
 				'aprobed_lessons' => array(
 					'type' => 'INT',
-					'constraint' => '11'
+					'constraint' => '11',
+					'null' => TRUE,
 				),
 				'reprobed_lessons' => array(
 					'type' => 'INT',

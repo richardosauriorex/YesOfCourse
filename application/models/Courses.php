@@ -48,6 +48,18 @@ private $table = 'courses';
 		$this->db->limit(1);
 		return $this->db->delete($this->table);
 	}
+
+	public function like($like = '', $not_like = '')
+	{
+		if(!empty($like)){
+			$this->db->like($like);
+		}
+		if(!empty($not_like)){
+			$this->db->not_like($not_like);	
+		}
+		$result = $this->db->get($this->table);
+		return $result->result();	
+	}
 }
 
 /* End of file Courses.php */
