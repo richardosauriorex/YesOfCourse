@@ -22,6 +22,11 @@ function alertDanger(msg) {
 	$('#alertDanger').modal('show');
 }
 
+function alertRules(totalQuestions) {
+	$('#correct').html(parseInt((80 * totalQuestions) / 100)); 
+	$('#alertRules').modal('show');
+}
+
 function alertSuccess(msg) {
 	$('.alertMsg').html(msg);
 	$('#alertSuccess').modal('show');	

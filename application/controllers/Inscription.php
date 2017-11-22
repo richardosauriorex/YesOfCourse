@@ -12,8 +12,11 @@ class Inscription extends CI_Controller {
 	}
 	public function index()
 	{
+		$data = [
+			'inscriptions' => $this->inscriptions->get(['user_id' => $this->user->user_id,'status_id'=> 'ins01'])
+		];
 		/*show list inscription of the user*/
-		$this->utils->layouts('inscription/index');
+		$this->utils->layouts('inscription/index', $data);
 	}
 	
 	public function proInscription()
@@ -45,6 +48,49 @@ class Inscription extends CI_Controller {
 	public function proDelete()
 	{
 		/*process to delete inscription*/
+	}
+
+	public function course($id_inscription = '' ,$id_course = '')
+	{
+		$data = [
+			'inscription_id' => $id_inscription,
+			'course' => $this->courses->get(['course_id' => $id_course,'status_id'=> 'crs00'],1),
+			'lessons' => $this->lessons->get(['course_id' => $id_course])
+		];
+		if (empty($data['course'])) {
+			redirect('inscription/','refresh');
+		}
+		/*show list inscription of the user*/
+		$this->utils->layouts('inscription/course', $data);
+	}
+
+	public function lesson($id_inscription = '' ,$id_course = '', $id_lesson = '')
+	{
+		$data = [
+			'inscription_id' => $id_inscription,
+			'course_id' => $id_course,
+			'lesson_id' => $id_lesson,
+			'lesson' => $this->lessons->get(['lesson_id' => $id_lesson, 'course_id' => $id_course], 1)
+		];
+		if (empty($data['lesson'])) {
+			redirect('inscription/','refresh');	
+		}
+		$this->utils->layouts('inscription/lesson', $data);	
+	}
+
+	public function evaluation($id_inscription, $id_course = '', $id_lesson = '')
+	{
+		$data = [
+			'inscription_id' => $id_inscription,
+			'course_id' => $id_course,
+			'lesson_id' => $id_lesson,
+			'evaluations' => $this->evaluations->get(['lesson_id' => $id_lesson])
+		];
+		/*if (empty($data['evaluations'])) {
+			redirect('inscription/lesson/'.$id_inscription.'/'.$id_course.'/'.$id_lesson,'refresh');
+		}*/
+		$this->utils->layouts('inscription/evaluation', $data);	
+		
 	}
 
 }

@@ -12,8 +12,8 @@
 			<input type="password" class="form-control" readonly id="cpass">
 		</div>
 		<div class="text-center">
-			<button type="submit" id="editPass" class="btn btn-info disabled">Cambiar</button>
-			<button id="cancelPass" class="btn btn-danger disabled">Cancelar</button>
+			<button type="submit" id="editPass" class="btn btn-info disabled" disabled>Cambiar</button>
+			<button id="cancelPass" class="btn btn-danger disabled" disabled>Cancelar</button>
 		</div>
 		<?= form_close(); ?>
 	</div>
@@ -32,7 +32,10 @@
 		inputs.on('dblclick', function(event) {
 			event.preventDefault();
 			inputs.removeAttr('readonly');
+			btnpass.removeClass('disabled');
 			cancelPass.removeClass('disabled');
+			btnpass.removeAttr('disabled');
+			cancelPass.removeAttr('disabled');
 		});
 		cancelPass.on('click', function(event) {
 			event.preventDefault();
@@ -40,6 +43,8 @@
 			inputs.attr('readonly', '');
 			btnpass.addClass('disabled');
 			cancelPass.addClass('disabled');
+			btnpass.attr('disabled' , '');
+			cancelPass.attr('disabled','');
 		});
 		cpass.on('focusout', function(event) {
 			event.preventDefault();

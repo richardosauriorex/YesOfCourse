@@ -37,10 +37,10 @@ function imageHandler() {
 /*funtion obtain list multimedia image*/
 
 /*function handler image*/
-if($('#quillRead').val() !== undefined){
+function quillread(content = ''){
 var quillOnlyRead = new Quill('#quillRead',{modules:{toolbar:false},theme: 'snow'});
-quillOnlyRead.setContents(JSON.parse(quillContent));
-quillOnlyRead.enable(false);
+quillOnlyRead.setContents(content);
+quillOnlyRead.enable(false);       
 }
 
 function obtainEditor(quill = '') {

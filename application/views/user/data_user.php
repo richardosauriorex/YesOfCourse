@@ -20,8 +20,8 @@
 				<input type="text" class="form-control" disabled value="<?= $user->user_email ?>" id="u_e">
 			</div>
 			<div class="text-center">
-				<button type="submit" id="editUser" class="btn btn-info disabled">Guardar</button>
-				<button id="cancelEdit" class="btn btn-danger disabled">Cancelar</button>
+				<button type="submit" id="editUser" class="btn btn-info disabled" disabled>Guardar</button>
+				<button id="cancelEdit" class="btn btn-danger disabled" disabled>Cancelar</button>
 			</div>
 			<?= form_close(); ?>
 		</div>
@@ -38,6 +38,8 @@
 			inputs.removeAttr('readonly');
 			save.removeClass('disabled');
 			cancelBtn.removeClass('disabled');
+			save.removeAttr('disabled');
+			cancelBtn.removeAttr('disabled');
 		});
 		cancelBtn.on('click', function(event) {
 			event.preventDefault();
@@ -45,6 +47,8 @@
 			inputs.attr('readonly', '');
 			save.addClass('disabled');
 			cancelBtn.addClass('disabled');
+			save.attr('disabled','');
+			cancelBtn.attr('disabled','');
 		});
 		form.on('submit', function(event) {
 			event.preventDefault();
