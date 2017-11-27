@@ -26,7 +26,7 @@ class Help extends CI_Controller {
 			$email = $this->input->post('email', TRUE);
 			$opt = $this->input->post('opt', TRUE);
 			/*query to know if exist user*/
-			$user = $this->users->get(['user_email' => $email]);
+			$user = $this->users->get(['user_email' => $email], 1);
 			if (!empty($user)) {
 				/*send email with url for activated account*/
 				if ($opt == 'code_auth') {

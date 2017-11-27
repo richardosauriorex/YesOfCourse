@@ -42,8 +42,9 @@ class Utils
 			<h3>'.$message.'</h3>
 			</div>';
             $config['protocol'] = 'smtp';
-            $config['smtp_host']= 'ssl://smtp.gmail.com';
-            $config['smtp_port']= 465;
+            $config['smtp_crypto'] = 'tls';
+            $config['smtp_host']= 'smtp.gmail.com';
+            $config['smtp_port']= 587;
             $config['smtp_user']= 'testsendmail182@gmail.com'; /*this email is for test and may be changed*/
             $config['smtp_pass']= 'testsendmail1820';
             $config['smtp_timeout'] = 30;

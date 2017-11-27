@@ -56,14 +56,13 @@ class Register extends CI_Controller {
 
 	public function validate($user_id = '', $code = '')
 	{
-		$this->utils->layouts('main/validate_user');
 		/*consult exists the user and validate code*/
 		$res = $this->users->get(['user_id' => $user_id, 'authentication_code' => $code]);
 		if (!empty($res)) {
 		$this->users->update(['user_id' => $user_id ], ['status_id' => 'usr02']);
-		$this->load->view('main/_activated');	
+		$this->utils->layouts('main/_activated');	
 		}else{
-		$this->load->view('main/_noactivated');	
+		$this->utils->layouts('main/_noactivated');	
 		}
 	}
 
