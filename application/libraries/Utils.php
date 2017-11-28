@@ -60,5 +60,6 @@ class Utils
 			$this->ext->email->message($txt); /*this may be a html code*/
 			$this->ext->email->send();	
 	}
+
 }
 ?>
