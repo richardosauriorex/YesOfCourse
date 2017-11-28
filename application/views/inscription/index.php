@@ -14,8 +14,10 @@
 			<?php if (!empty($info_course)): ?>
 			<!-- obtain the number of lessons actually -->
 			<?php $count_lessons = $this->lessons->count(['course_id' => $value->course_id]); ?>
+			<!-- lessons aprobed -->
+			<?php $aprobed_lessons = $this->results->get(['inscription_id' => $value->inscription_id]); ?>
 			<!-- progress lessons aprobed -->
-			<?php $total = ($value->aprobed_lessons/ $count_lessons) * 100 ?>
+			<?php $total = (count($aprobed_lessons) / $count_lessons) * 100 ?>
 			<div class="card">
 				<div class="card-header">
 					<div class="row">

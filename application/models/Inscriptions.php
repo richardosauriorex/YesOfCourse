@@ -48,6 +48,7 @@ private $table = 'inscriptions';
 		$this->db->limit(1);
 		return $this->db->delete($this->table);
 	}
+	
 }
 
 /* End of file Inscriptions.php */

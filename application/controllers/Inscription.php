@@ -86,11 +86,41 @@ class Inscription extends CI_Controller {
 			'lesson_id' => $id_lesson,
 			'evaluations' => $this->evaluations->get(['lesson_id' => $id_lesson])
 		];
-		/*if (empty($data['evaluations'])) {
+		if (empty($data['evaluations'])) {
 			redirect('inscription/lesson/'.$id_inscription.'/'.$id_course.'/'.$id_lesson,'refresh');
-		}*/
+		}
 		$this->utils->layouts('inscription/evaluation', $data);	
 		
+	}
+
+	public function result()
+	{
+		$data = [];
+		$data['csrf'] = $this->security->get_csrf_hash();
+		$this->form_validation->set_rules('inscription_id', 'Numero de inscripción', 'trim|required');
+		$this->form_validation->set_rules('lesson_id', 'Numero registro lección', 'trim|required');
+		$this->form_validation->set_rules('number_questions', 'Numero de preguntas', 'trim|required');
+		$this->form_validation->set_rules('good_answers', 'Respuestas correctas', 'trim|required');
+		$this->form_validation->set_rules('qualification', 'Calificación', 'trim|required');
+		if ($this->form_validation->run() == TRUE) {
+			$exist = $this->results->get(['inscription_id' => $this->input->post('inscription_id', TRUE), 'lesson_id' => $this->input->post('lesson_id', TRUE)]);
+			if (empty($exist)) {
+				$values = [
+				'number_questions' => $this->input->post('number_questions', TRUE),
+				'good_answers' => $this->input->post('good_answers', TRUE),
+				'qualification' => $this->input->post('qualification', TRUE),
+				'inscription_id' => $this->input->post('inscription_id', TRUE),
+				'lesson_id' => $this->input->post('lesson_id', TRUE)
+			];
+			$this->results->insert($values);
+			$data['success'] = 'Se registro la calificación.';
+			}else{
+			$data['danger'] = 'La lección ya ha sido aprobada';
+			}
+		} else {
+			$data['danger'] = validation_errors('<br>');
+		}
+		echo json_encode($data);
 	}
 
 }

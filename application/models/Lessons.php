@@ -54,6 +54,15 @@ private $table = 'lessons';
 		$this->db->where($where);
 		return $this->db->count_all_results($this->table);
 	}
+
+	public function join_eval_ans($lesson_id = '')
+	{
+		$this->db->where('lessons.lesson_id', $lesson_id);
+		$this->db->join('evaluations', 'evaluations.lesson_id = lessons.lesson_id');
+		$this->db->join('answers', 'answers.evaluation_id = evaluations.evaluation_id');
+		$result = $this->db->get('lessons');
+		return $result;
+	}
 }
 
 /* End of file Lessons.php */
