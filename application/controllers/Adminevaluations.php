@@ -7,10 +7,10 @@ class AdminEvaluations extends CI_Controller {
 	{
 		/*show all evaluations with answers of the user lesson*/
 		$this->utils->layouts('adminevaluations/index');
-		$this->view->load('adminevaluations/createevaluation');
-		$this->view->load('adminevaluations/createanswer');
-		$this->view->load('adminevaluations/editanswer');
-		$this->view->load('adminevaluations/editevaluation');
+		$this->load->view('adminevaluations/createevaluation');
+		$this->load->view('adminevaluations/createanswer');
+		$this->load->view('adminevaluations/editanswer');
+		$this->load->view('adminevaluations/editevaluation');
 	}
 
 	public function proCreate()

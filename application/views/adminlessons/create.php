@@ -6,7 +6,7 @@
 	</head>
 	<body>
 		<div class="container mt-5">
-			<div class="card">
+			<div class="card mb-5">
 				<div class="card-body bg-dark text-white">
 					<h1 class="text-center">Crear lección</h1>
 					<?= form_open('adminlessons/proCreate',['id' => 'formCreate', 'class' => 'container was-validated']); ?>
@@ -16,11 +16,10 @@
 						<input type="text" class="form-control" id="lesson_title" required>
 					</div>
 					<div class="bg-white text-dark">
-					<div id="editor">
-						
+						<div id="editor">
+							
+						</div>
 					</div>
-					</div>
-
 					<div class="text-center mt-1">
 						<button type="submit" class="btn btn-success">Crear lección</button>
 					</div>

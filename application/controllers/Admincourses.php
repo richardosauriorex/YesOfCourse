@@ -17,8 +17,12 @@ class Admincourses extends CI_Controller {
 
 	public function index()
 	{
+		$data =
+		[
+			'courses' => $this->courses->get(['user_id' => $this->user->user_id])
+		];
 		/*show all courses own of the user*/
-		$this->utils->layouts('admincourses/index');
+		$this->utils->layouts('admincourses/index', $data);
 		
 	}
 

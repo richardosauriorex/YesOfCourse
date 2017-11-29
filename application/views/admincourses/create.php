@@ -6,7 +6,7 @@
 	</head>
 	<body>
 		<div class="container mt-5">
-			<div class="card">
+			<div class="card mb-5">
 				<div class="card-body bg-dark text-white">
 					<h1 class="text-center">Crear curso</h1>
 					<?= form_open('admincourses/proCreate',['id' => 'formCreate', 'class' => 'container was-validated']); ?>

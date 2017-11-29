@@ -11,16 +11,22 @@ class AdminLessons extends CI_Controller {
 		$this->user = $this->session->userdata('user');
 	}
 
-	public function index()
+	public function index($course_id = '')
 	{
+		$data =
+		[
+			'course' => $this->courses->get(['course_id' => $course_id] , 1),
+			'lessons' => $this->lessons->get(['course_id' => $course_id])
+		];
 		/*show all lessons own of the user course*/
-		$this->utils->layouts('adminlessons/index');
+		$this->utils->layouts('adminlessons/index', $data);
 	}
 
 	public function create($course_id = '')
 	{
 		/*view create lesson*/
-		$data = [
+		$data = 
+		[
 			'course_id' => $course_id
 		];
 		$this->utils->layouts('adminlessons/create', $data);
