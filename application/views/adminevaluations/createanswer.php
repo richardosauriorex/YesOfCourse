@@ -17,13 +17,14 @@
 								</div>
 							</div>
 							<h2 class="text-center">Nueva respuesta</h2>
-							<?= form_open('adminevaluations/createanswer', ['id' => 'createA', 'class' => 'container was-validated']); ?>
+							<?= form_open('adminevaluations/proAnswer', ['id' => 'createA', 'class' => 'container was-validated']); ?>
+							<input type="hidden" id="eval_id">
 							<div class="form-group">
 								<div class="row">
 									<div class="col">
 										<i class="fa fa-comment" aria-hidden="true"></i>
 										<label for="nRespuesta">Respuesta</label>
-										<input type="text" class="form-control" id="nRespuesta" placeholder="Respuesta" required>
+										<input type="text" class="form-control" id="nAns" placeholder="Respuesta" required>
 									</div>
 								</div>
 								<div class="row">
@@ -31,23 +32,24 @@
 										<div class="form-group">
 											<i class="fa fa-check" aria-hidden="true"></i>
 											<label for="nTipoRespuesta" class="">Tipo de respuesta</label>
-											<select class="custom-select col-lg-12 col-xl-12" id="nTipoRespuesta" required>
+											<select class="form-control" id="nTipoRespuesta" required>
 												<option selected disabled>Elige una opción</option>
-												<option value="Correcto">Correcto</option>
-												<option value="Incorrecto">Incorrecto</option>
+												<option value="ans00">Correcto</option>
+												<option value="ans01">Incorrecto</option>
 											</select>
 										</div>
 									</div>
 								</div>
 							</div>
+							<div class="form-group text-center">
+								<button type="submit" class="btn btn-info btn-lg">
+								Guardar
+								</button>
+							</div>
 							<?= form_close(); ?>
 						</div>
 					</div>
-					<div class="form-group text-center">
-						<button type="button" class="btn btn-info btn-lg">
-						Guardar
-						</button>
-					</div>
+					
 				</div>
 			</div>
 		</div>
@@ -56,27 +58,22 @@
 </html>
 <script >
 	$(document).ready(function(){
-
-		$('#addAns').on('click',function(event){
+		$('#createA').on('submit', function(event) {
 			event.preventDefault();
-			console.log('entro');
-			$('#answerCreate').modal('show');
-		});
-
-		$('#createA').on('submit',function(event){
-			event.preventDefault();
+			/* Act on the event */
 			$('#answerCreate').modal('hide');
 			var url = $(this).attr('action');
 			var data = {
-				'answer': $('#nRespuesta').val(),
-				'status_id': $('#nTipoRespuesta').val(),
-				'evaluation_id': '<?php echo $evaluations->evaluation_id ?>'
+				'answer': $('#nAns').val(),
+				'status_id': $('#nTipoRespuesta option:selected').val(),
+				'evaluation_id': $('#eval_id').val()
 			};
+			console.log(data);
+			console.log(url);
 			$('#nRespuesta').val('');
-			$('#nTipoRespuesta').val('');
 			request_ajax(url, data, function(response)
 			{
-				if (response.success != undefined) 
+				if (response.success != undefined)
 				{
 					alertSuccess(response.success);
 				}else
@@ -86,4 +83,8 @@
 			});
 		});
 	});
+	function createAnswer(eval_id = ''){
+		$('#eval_id').val(eval_id);
+		$('#answerCreate').modal('show');
+	}
 </script>

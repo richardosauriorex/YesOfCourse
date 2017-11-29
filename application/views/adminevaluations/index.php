@@ -16,7 +16,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="card-body col-xs-12 col-md-12 col-lg-12 col-xl-12">
+				<div class="card-body">
 					<h4 class="card-title">
 					<?php echo $lesson->lesson_title ?>
 					</h4>
@@ -40,13 +40,13 @@
 							<div class="row">
 								<div class="col-lg-6 col-md-5 col-xs-12">
 									<h5 class="text-truncate">
-										<?php echo $value->question ?>
+									<?php echo $value->question ?>
 									</h5>
 								</div>
 								<div class="col-lg-6 col-md-7 col-xs-12 text-right">
-									<a class="btn btn-success mt-1 text-white " id="addAns">Nueva respuesta</a>
-									<a class="btn btn-warning mt-1" id="editEval" ">Modificar</a>
-									<a class="btn btn-danger mt-1 text-white">Eliminar</a>
+									<a class="btn btn-success mt-1 text-white" onclick="createAnswer(<?= $value->evaluation_id ?>)">Nueva respuesta</a>
+									<a class="btn btn-warning mt-1" onclick="editEval(<?= $value->evaluation_id ?>)">Modificar</a>
+									<a class="btn btn-danger mt-1 text-white" onclick="deleteEval(<?= $value->evaluation_id ?>)">Eliminar</a>
 								</div>
 							</div>
 						</div>
@@ -77,3 +77,24 @@
 		</div>
 	</body>
 </html>
+<script>
+	$(document).ready(function($) {
+			
+	});
+
+	function editEval(eval_id = ''){
+		var url = "<?= site_url().'/adminevaluations/evalInfo' ?>";
+		var data = {
+			'evaluation_id': eval_id
+		};
+		request_ajax(url, data, function(response){
+			$('#evalId').val(response.eval.evaluation_id);
+			$('#ePregunta').val(response.eval.question);
+		});
+		$('#evaluationModify').modal('show');
+	}
+
+	function deleteEval(eval_id = ''){
+
+	}
+</script>

@@ -10,7 +10,6 @@ class AdminEvaluations extends CI_Controller {
 			'lesson' => $this->lessons->get(['lesson_id' => $lesson_id], 1),
 			'evaluations' => $this->evaluations->get(['lesson_id' => $lesson_id]),
 			'course_id' => $course_id
-
 		];
 		/*show all evaluations with answers of the user lesson*/
 		$this->utils->layouts('adminevaluations/index', $data);
@@ -55,11 +54,48 @@ class AdminEvaluations extends CI_Controller {
 	public function proEdit()
 	{
 		/*process to modify evaluation*/
+		$this->form_validation->set_rules('evaluation_id', 'Numero Registro Evaluación', 'trim|required');
+		$this->form_validation->set_rules('question', 'Pregunta', 'trim|required');
+		if ($this->form_validation->run() == TRUE) {
+			$exist = $this->evaluations->get(['evaluation_id' => $this->input->post('evaluation_id', TRUE)], 1);
+			if (!empty($exist)) {
+				$set = ['question' => $this->input->post('question', TRUE)];
+				$id = $this->evaluations->update(['evaluation_id' => $this->input->post('evaluation_id', TRUE)], $set);
+				$data['info'] = 'Se edito la evaluación';
+			}else{
+				$data['danger'] = 'La evaluación no es válida';	
+			}
+		} else {
+			$data['danger'] = validation_errors('<br>');	
+		}
+		echo json_encode($data);
 	}
 
 	public function proAnswer()
 	{
 		/*process to create answer*/
+		$data = [];
+		$data['csrf'] = $this->security->get_csrf_hash();
+		$this->form_validation->set_rules('evaluation_id', 'Numero de registro evaluación', 'trim|required');
+		$this->form_validation->set_rules('answer', 'Respuesta', 'trim|required');
+		$this->form_validation->set_rules('status_id', 'Numero de registro estado', 'trim|required');
+		if ($this->form_validation->run() == TRUE) {
+			$exist = $this->evaluations->get(['evaluation_id' => $this->input->post('evaluation_id', TRUE)], 1);
+			if (!empty($exist)) {
+				$values = [
+					'evaluation_id' => $this->input->post('evaluation_id', TRUE),
+					'answer' => $this->input->post('answer', TRUE),
+					'status_id' => $this->input->post('status_id', TRUE)
+				];
+				$this->answers->insert($values);
+				$data['success'] = 'Se registró la respuesta.';
+			}else{
+				$data['danger'] = 'La evaluación no es válida';	
+			}
+		} else {
+			$data['danger'] = validation_errors('<br>');
+		}
+		echo json_encode($data);
 	}
 
 	public function proEditAnswer()
@@ -74,6 +110,22 @@ class AdminEvaluations extends CI_Controller {
 	public function deleteAnswer()
 	{
 		
+	}
+
+	public function evalInfo()
+	{
+		$data = [];
+		$data['csrf'] = $this->security->get_csrf_hash();
+		$data['eval'] = $this->evaluations->get(['evaluation_id' => $this->input->post('evaluation_id', TRUE)], 1);
+		echo json_encode($data);
+	}
+
+	public function ansInfo()
+	{
+		$data = [];
+		$data['csrf'] = $this->security->get_csrf_hash();
+		$data['ans'] = $this->evaluations->get(['answer_id' => $this->input->post('answer_id', TRUE)], 1);
+		echo json_encode($data);	
 	}
 
 }
