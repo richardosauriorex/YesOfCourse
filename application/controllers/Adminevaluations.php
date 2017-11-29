@@ -101,6 +101,25 @@ class AdminEvaluations extends CI_Controller {
 	public function proEditAnswer()
 	{
 		/*process to modify answer*/
+		$this->form_validation->set_rules('answer_id', 'Numero Registro Pregunta', 'trim|required');
+		$this->form_validation->set_rules('answer', 'Respuesta', 'trim|required');
+		$this->form_validation->set_rules('status_id', 'Status', 'trim|required');
+		if ($this->form_validation->run() == TRUE) {
+			$exist = $this->answers->get(['answer_id' => $this->input->post('answer_id', TRUE)], 1);
+			if (!empty($exist)) {
+				$set = [
+					'answer' => $this->input->post('answer', TRUE),
+					'status_id' => $this->input->post('status_id', TRUE)
+				];
+				$id = $this->answers->update(['answer_id' => $this->input->post('answer_id', TRUE)], $set);
+				$data['info'] = 'Se edito la respuesta.';
+			}else{
+				$data['danger'] = 'La evaluación no es válida';	
+			}
+		} else {
+			$data['danger'] = validation_errors('<br>');	
+		}
+		echo json_encode($data);
 	}
 
 	public function deleteEvaluation()
@@ -124,7 +143,7 @@ class AdminEvaluations extends CI_Controller {
 	{
 		$data = [];
 		$data['csrf'] = $this->security->get_csrf_hash();
-		$data['ans'] = $this->evaluations->get(['answer_id' => $this->input->post('answer_id', TRUE)], 1);
+		$data['ans'] = $this->answers->get(['answer_id' => $this->input->post('answer_id', TRUE)], 1);
 		echo json_encode($data);	
 	}
 

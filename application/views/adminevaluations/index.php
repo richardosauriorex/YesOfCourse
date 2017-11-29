@@ -61,7 +61,7 @@
 												<h6><?php echo $val->answer ?></h6>
 											</div>
 											<div class="col-lg-4 col-md-5 col-xs-12 text-right">
-												<a class="btn btn-warning mt-1" id="editAns">Modificar</a>
+												<a class="btn btn-warning mt-1" onclick="editAns(<?= $val->answer_id ?>)">Modificar</a>
 												<a class="btn btn-danger mt-1 text-white">Eliminar</a>
 											</div>
 										</div>
@@ -94,7 +94,16 @@
 		$('#evaluationModify').modal('show');
 	}
 
-	function deleteEval(eval_id = ''){
-
+	function editAns(ans_id = ''){
+		var url = "<?= site_url().'/adminevaluations/ansInfo' ?>";
+		var data = {
+			'answer_id': ans_id
+		};
+		request_ajax(url, data, function(response){
+			console.log(response);
+			$('#ansId').val(response.ans.evaluation_id);
+			$('#eRespuesta').val(response.ans.answer);
+		});
+		$('#answerModify').modal('show');
 	}
 </script>

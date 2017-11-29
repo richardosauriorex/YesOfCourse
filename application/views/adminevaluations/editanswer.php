@@ -17,7 +17,8 @@
 								</div>
 							</div>
 							<h2 class="text-center">Editar respuesta</h2>
-							<?= form_open('adminevaluations/editanswer', ['id' => 'editAnswer', 'class' => 'container was-validated']); ?>
+							<?= form_open('adminevaluations/proEditAnswer', ['id' => 'editAnswer', 'class' => 'container was-validated']); ?>
+							<input type="hidden" id="ansId">
 							<div class="form-group">
 								<div class="row">
 									<div class="col">
@@ -31,26 +32,48 @@
 										<div class="form-group">
 											<i class="fa fa-check" aria-hidden="true"></i>
 											<label for="eTipoRespuesta" class="">Tipo de respuesta</label>
-											<select class="custom-select col-lg-12 col-xl-12" id="eTipoRespuesta" required>
+											<select class="form-control" id="eTipoRespuesta" required>
 												<option selected disabled>Elige una opción</option>
-												<option value="Correcto">Correcto</option>
-												<option value="Incorrecto">Incorrecto</option>
+												<option value="ans00">Correcto</option>
+												<option value="ans01">Incorrecto</option>
 											</select>
 										</div>
 									</div>
 								</div>
 							</div>
+							<div class="form-group text-center">
+								<button type="submit" class="btn btn-info btn-lg">
+								Guardar
+								</button>
+							</div>
 							<?= form_close(); ?>
 						</div>
 					</div>
-					<div class="form-group text-center">
-						<button type="button" class="btn btn-info btn-lg">
-						Guardar
-						</button>
-					</div>
+					
 				</div>
 			</div>
 		</div>
 		<!-- Termina modal -->
 	</body>
 </html>
+<script>
+	$(document).ready(function() {
+		$('#editAnswer').on('submit', function(event) {
+			event.preventDefault();
+			/* Act on the event */
+			var url = $(this).attr('action');
+			var data = {
+				'answer_id':$('#ansId').val(),
+				'answer':$('#eRespuesta').val(),
+				'status_id': $('#eTipoRespuesta option:selected').val(),
+			};
+			request_ajax(url, data, function(response){
+				if (response.info != undefined) {
+					alertInfo(response.info);
+				}else{
+					alertDanger(response.danger);
+				}
+			});
+		});
+	});
+</script>
