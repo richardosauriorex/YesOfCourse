@@ -17,7 +17,7 @@
 								</div>
 							</div>
 							<h2 class="text-center">Nueva respuesta</h2>
-							<?= form_open('adminevaluations/createanswer', ['id' => 'createAnswer', 'class' => 'container was-validated']); ?>
+							<?= form_open('adminevaluations/createanswer', ['id' => 'createA', 'class' => 'container was-validated']); ?>
 							<div class="form-group">
 								<div class="row">
 									<div class="col">
@@ -54,3 +54,36 @@
 		<!-- Termina modal -->
 	</body>
 </html>
+<script >
+	$(document).ready(function(){
+
+		$('#addAns').on('click',function(event){
+			event.preventDefault();
+			console.log('entro');
+			$('#answerCreate').modal('show');
+		});
+
+		$('#createA').on('submit',function(event){
+			event.preventDefault();
+			$('#answerCreate').modal('hide');
+			var url = $(this).attr('action');
+			var data = {
+				'answer': $('#nRespuesta').val(),
+				'status_id': $('#nTipoRespuesta').val(),
+				'evaluation_id': '<?php echo $evaluations->evaluation_id ?>'
+			};
+			$('#nRespuesta').val('');
+			$('#nTipoRespuesta').val('');
+			request_ajax(url, data, function(response)
+			{
+				if (response.success != undefined) 
+				{
+					alertSuccess(response.success);
+				}else
+				{
+					alertDanger(response.danger);
+				}
+			});
+		});
+	});
+</script>

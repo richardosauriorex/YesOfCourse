@@ -9,7 +9,6 @@ function request_ajax(url = '', data = '', callback) {
 	})
 	.done(function(data) {
 		$("input[name|='security']").val(data.csrf);
-/*		obtainData(data);*/
 		if (callback) callback(data);			
 	})
 	.fail(function() {

@@ -6,7 +6,8 @@ private $table = 'evaluations';
 	/*into value = array associative with fields to insert return true or false*/
 	public function insert($value = '')
 	{
-		return $this->db->insert($this->table, $value);
+		$this->db->insert($this->table, $value);
+		return $this->db->insert_id();
 	}
 
 	/*into value = array associative with fields and id to table return true or false*/

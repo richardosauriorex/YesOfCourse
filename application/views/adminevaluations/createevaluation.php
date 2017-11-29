@@ -17,7 +17,7 @@
 								</div>
 							</div>
 							<h2 class="text-center">Nueva evaluación</h2>
-							<?= form_open('adminevaluations/createevaluation', ['id' => 'createEvaluation', 'class' => 'container was-validated']); ?>
+							<?= form_open('adminevaluations/proCreate', ['id' => 'createE', 'class' => 'container was-validated']); ?>
 							<div class="form-group">
 								<i class="fa fa-question-circle" aria-hidden="true"></i>
 								<label for="nPregunta">Pregunta</label>
@@ -33,7 +33,7 @@
 								</div>
 							</div>
 							<div class="form-group text-center">
-								<button type="button" class="btn btn-info btn-lg">
+								<button type="submit" class="btn btn-info btn-lg">
 								Guardar
 								</button>
 							</div>
@@ -46,3 +46,32 @@
 		<!-- Termina modal -->
 	</body>
 </html>
+<script>
+	$(document).ready(function() {
+		$('#addEval').on('click',function(event){
+			event.preventDefault();
+			console.log('entro');
+			$('#evaluationCreate').modal('show');
+		});
+
+		$('#createE').on('submit',function(event){
+			event.preventDefault();
+			$('#evaluationCreate').modal('hide');
+			var url = $(this).attr('action');
+			var data = {
+				'question': $('#nPregunta').val(),
+				'answer': $('#nRespuesta').val(),
+				'lesson_id': '<?php echo $lesson->lesson_id ?>'
+			};
+			$('#nPregunta').val('');
+			$('#nRespuesta').val('');
+			request_ajax(url, data, function(response){
+				if (response.success != undefined) {
+					alertSuccess(response.success);
+				}else{
+					alertDanger(response.danger);
+				}
+			});
+		});
+	});
+</script>

@@ -6,7 +6,7 @@
 	</head>
 	<body>
 		<div class="container mt-5">
-			<div class="card">
+			<div class="card mb-5">
 				<div class="card-body bg-light border">
 					<h1 class="text-center">Editar lección</h1>
 					<?= form_open('adminlessons/proEdit',['id' => 'formCreate', 'class' => 'container was-validated']); ?>
