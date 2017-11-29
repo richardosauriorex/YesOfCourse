@@ -1,5 +1,5 @@
 <div class="container">
-<div class="card bg-dark text-white">
+<div class="card bg-light border">
 	<div class="card-body">
 		<h1 class="text-center">Cambiar contraseña</h1>
 		<?= form_open('user/proPass',['id' => 'formEditPass', 'class' => 'container was-validated']); ?>
@@ -12,7 +12,7 @@
 			<input type="password" class="form-control" readonly id="cpass">
 		</div>
 		<div class="text-center">
-			<button type="submit" id="editPass" class="btn btn-info disabled" disabled>Cambiar</button>
+			<button type="submit" id="editPass" class="btn btn-warning disabled" disabled>Editar</button>
 			<button id="cancelPass" class="btn btn-danger disabled" disabled>Cancelar</button>
 		</div>
 		<?= form_close(); ?>

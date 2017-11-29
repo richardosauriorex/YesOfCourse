@@ -6,13 +6,13 @@
 	<body>
 		<div class="container mt-5">
 			<div class="card">
-				<div class="card-header bg-info">
+				<div class="card-header bg-light border">
 					<div class="row">
-						<div class="col-xs-6 col-md-6 col-lg-6 col-xs-6 text-white">
+						<div class="col-xs-6 col-md-6 col-lg-6 col-xs-6">
 							<h5>Curso</h5>
 						</div>
 						<div class="col-xs-6 col-md-6 col-lg-6 col-xl-6 text-right">
-							<a href="<?php echo site_url().'/admincourses/index' ?>" class="btn fa fa-chevron-left text-success bg-light" data-toggle="tooltip" title="Regresar"></a>
+							<a href="<?php echo site_url().'/admincourses/index' ?>" class="btn btn-success text-white" data-toggle="tooltip" title="Regresar"><i class="fa fa-chevron-left"></i></a>
 						</div>
 					</div>
 				</div>
@@ -26,13 +26,13 @@
 				</div>
 			</div>
 			<div class="card mt-5 mb-5">
-				<div class="card-header bg-dark">
+				<div class="card-header bg-light border">
 					<div class="row">
-						<div class="col-xs-6 col-md-6 col-lg-6 col-xs-6 text-white">
+						<div class="col-xs-6 col-md-6 col-lg-6 col-xs-6">
 							<h5>Lecciones</h5>
 						</div>
 						<div class="col-xs-6 col-md-6 col-lg-6 col-xl-6 text-right">
-							<a href="<?php echo site_url().'/adminlessons/create/'.$course->course_id ?>" class="btn fa fa-plus text-white bg-primary" data-toggle="tooltip" title="Agregar lección"></a>
+							<a href="<?php echo site_url().'/adminlessons/create/'.$course->course_id ?>" class="btn text-white btn-success" data-toggle="tooltip" title="Agregar lección"><i class="fa fa-plus"></i></a>
 						</div>
 					</div>
 					
@@ -48,7 +48,8 @@
 									</h4>
 								</div>
 								<div class="col-lg-4 col-md-4 col-xs-12 text-right">
-									<a href="<?php echo site_url().'/adminlessons/edit' ?>" class="btn btn-warning">Modificar</a>
+									<a href="<?php echo site_url().'/adminevaluations/index/'.$value->course_id.'/'.$value->lesson_id ?>" class="btn btn-success">Evaluación</a>
+									<a href="<?php echo site_url().'/adminlessons/edit/'.$value->course_id.'/'.$value->lesson_id ?>" class="btn btn-warning">Modificar</a>
 									<a href="" class="btn btn-danger">Eliminar</a>
 								</div>
 							</div>

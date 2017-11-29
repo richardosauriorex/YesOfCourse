@@ -11,10 +11,10 @@
 				<div class="card-header">
 					<div class="row">
 						<div class="col-lg-6 col-md-6 col-sm-6">
-							<?= $course->course_name ?>
+							<h3><?= $course->course_name ?></h3>
 						</div>
 						<div class="col-lg-6 col-md-6 col-sm-6 text-right">
-							<a href="<?= site_url().'/inscription' ?>" class="btn btn-warning"><i class="fa fa-undo"></i></a>
+							<a href="<?= site_url().'/inscription' ?>" class="btn btn-success btn-lg"><i class="fa fa-undo"></i></a>
 						</div>
 					</div>
 				</div>
@@ -27,8 +27,10 @@
 				</div>
 			</div>
 			<!-- lessons to course -->
-			<div class="card mt-5">
-				<h3 class="text-center mt-3">Lecciones</h3>
+			<div class="card mt-5 ">
+				<div class="card-header">
+					<h3 class="text-center bg-light">Lecciones</h3>
+				</div>
 				<div class="card-body">
 					<?php foreach ($lessons as $value): ?>
 					<!-- obtain result to lesson -->
@@ -37,11 +39,11 @@
 						<?= $value->lesson_title ?>
 						<div class="text-right">
 							<?php if (!empty($result)): ?>
-							<span class="badge badge-success">Aprobada</span>
+							<span class="btn btn-success" disabled>Aprobada</span>
 							<?php else: ?>
-							<span class="badge badge-danger">Reprobada</span>
+							<span class="btn btn-danger">Reprobada</span>
 							<?php endif ?>
-							<a href="<?= site_url().'/inscription/lesson/'.$inscription_id.'/'.$course->course_id.'/'.$value->lesson_id ?>" class="badge badge-success">Ver lección</a>
+							<a href="<?= site_url().'/inscription/lesson/'.$inscription_id.'/'.$course->course_id.'/'.$value->lesson_id ?>" class="btn btn-success">Ver lección</a>
 						</div>
 					</li>
 					<?php endforeach ?>

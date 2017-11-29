@@ -6,13 +6,13 @@
 	<body>
 		<div class="container mt-5 mb-5">
 			<div class="card mt-5">
-				<div class="card-header bg-dark text-white">
+				<div class="card-header bg-light border">
 					<div class="row">
 						<div class="col-sm-8 col-md-8 col-lg-8 col-xl-8">
 							<h4>Cursos</h4>
 						</div>
 						<div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 text-right">
-							<a type="button" class="btn fa fa-plus text-white bg-primary" href="<?php echo site_url().'/admincourses/create' ?>" title="Nuevo curso"></a>
+							<a class="btn btn-success text-white" href="<?php echo site_url().'/admincourses/create' ?>" title="Nuevo curso"><i class="fa fa-plus"></i></a>
 						</div>
 					</div>
 				</div>
@@ -27,9 +27,9 @@
 									</h4>
 								</div>
 								<div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 text-right">
-									<a type="button" class="btn btn-success mt-1" href="<?php echo site_url().'/adminlessons/index/'.$value->course_id ?>">Ver curso</a>
-									<a type="button" class="btn btn-warning mt-1" href="<?php echo site_url().'/admincourses/edit/'.$value->course_id ?>">Modificar</a>
-									<a type="button" class="btn btn-danger mt-1 text-white">Eliminar</a>
+									<a class="btn btn-success mt-1" href="<?php echo site_url().'/adminlessons/index/'.$value->course_id ?>">Ver curso</a>
+									<a  class="btn btn-warning mt-1" href="<?php echo site_url().'/admincourses/edit/'.$value->course_id ?>">Modificar</a>
+									<a  class="btn btn-danger mt-1 text-white">Eliminar</a>
 								</div>
 							</div>
 						</li>

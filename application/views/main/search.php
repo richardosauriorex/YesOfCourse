@@ -6,7 +6,7 @@
 	</head>
 	<body>
 		<div class="container mt-5">
-			<div class="card">
+			<div class="card bg-light border">
 				<div class="card-body">
 					<?= form_open('main/proSearch',['id' => 'search', 'class' => 'container was-validated']); ?>
 					<div class="row">

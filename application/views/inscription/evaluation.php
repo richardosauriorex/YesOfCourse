@@ -60,7 +60,7 @@
 	var t = <?= count($evaluations) ?>;
 	var click = 0;
 	var c = 0;
-	/*alertRules(t);*/
+	alertRules(t);
 	
 	$('.ans00').on('click', function(event) {
 	event.preventDefault();

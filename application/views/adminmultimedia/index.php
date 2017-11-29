@@ -108,7 +108,7 @@ function delete_img(id){
 				var data = {};
 				request_ajax(url, data, function(other){
 					if(other.danger != undefined){
-						alertDanger(other.danger);
+						image_div(other.images);
 					}else{
 						image_div(other.images);
 					}

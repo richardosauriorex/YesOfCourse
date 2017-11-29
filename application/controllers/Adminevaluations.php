@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class AdminEvaluations extends CI_Controller {
 
-	public function index()
+	public function index($course_id = '', $lesson_id = '')
 	{
 		/*show all evaluations with answers of the user lesson*/
 		$this->utils->layouts('adminevaluations/index');

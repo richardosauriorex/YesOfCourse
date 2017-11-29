@@ -6,7 +6,7 @@
 </head>
 <body>
 	<div class="container mt-5">
-		<div class="jumbotron bg-dark text-white">
+		<div class="jumbotron bg-light border">
 			<div class="container">
 				<h2 class="text-center">Registrar</h2>
 				<?= form_open('register/regUser', ['id' => 'register', 'class' => 'container was-validated']); ?>
@@ -31,7 +31,7 @@
 					<input type="password" class="form-control" id="nPassword" required>
 				</div>
 				<div class="text-center">
-					<button type="reset" class="btn bg-warning text-white">Borrar</button>
+					<button type="reset" class="btn bg-danger text-white">Borrar</button>
 					<button type="submit" class="btn bg-success text-white">Enviar</button>
 				</div>
 				<?= form_close(); ?>

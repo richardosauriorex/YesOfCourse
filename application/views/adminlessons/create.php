@@ -7,7 +7,7 @@
 	<body>
 		<div class="container mt-5">
 			<div class="card mb-5">
-				<div class="card-body bg-dark text-white">
+				<div class="card-body bg-light border">
 					<h1 class="text-center">Crear lección</h1>
 					<?= form_open('adminlessons/proCreate',['id' => 'formCreate', 'class' => 'container was-validated']); ?>
 					<input type="hidden" id='course_id' value="<?= $course_id ?>">

@@ -37,7 +37,7 @@
 					</div>
 					<h6>Progreso:</h6>
 					<div class="progress">
-						<div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuenow="<?= $value->aprobed_lessons ?>" aria-valuemin="0" aria-valuemax="<?= $count_lessons ?>" style="width:<?= $total.'%' ?> "><?= $total.'%'?></div>
+						<div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" aria-valuenow="<?= $value->aprobed_lessons ?>" aria-valuemin="0" aria-valuemax="<?= $count_lessons ?>" style="width:<?= $total.'%' ?> "><?= $total.'%'?></div>
 					</div>
 					<h6>Fecha de inscripción: <?= $value->create_at ?></h6>
 				</div>

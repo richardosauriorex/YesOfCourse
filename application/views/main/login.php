@@ -5,7 +5,7 @@
 	</head>
 	<body>
 		<div class="container mt-5">
-			<div class="jumbotron bg-dark text-white">
+			<div class="jumbotron bg-light border">
 				<h1 class=" text-center">Iniciar sesión</h1>
 				<!-- begin form -->
 				<?php echo form_open('login/proLogin', ['class' => 'was-validated', 'id' => 'formLogin', 'novalidate']); ?>

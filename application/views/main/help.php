@@ -6,16 +6,16 @@
 </head>
 <body>
 	<div class="container mt-5">
-		<div class="jumbotron bg-dark text-white">
+		<div class="jumbotron bg-light border">
 			<h1 class="text-center">Ayuda al usuario</h1>
 			<?= form_open('help/helpMe', ['class' => 'container was-validated', 'id' => 'help']); ?>
 			<div class="form-group">
 				<label>Correo electrónico:</label>
-				<input type="email" class="form-control" placeholder="Ingrese su correo electronico" id="email">
+				<input type="email" class="form-control" placeholder="Ingrese su correo electronico" id="email" required>
 			</div>
 			<div class="form-group">
 				<label>Elija una acción</label>
-				<select class="form-control" name="option" id="option">
+				<select class="form-control" name="option" id="option" required>
 					<option disabled selected>Elija una ocpión</option>
 					<option value="code_auth">Reenviar codigo autorización</option>
 					<option value="rest_pass">Restaurar contraseña</option>

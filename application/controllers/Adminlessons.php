@@ -48,7 +48,7 @@ class AdminLessons extends CI_Controller {
 			];
 			$this->lessons->insert($values);
 			$data['success'] = 'Se registro la lección.';
-			$data['url'] = site_url().'/adminlessons/index';
+			$data['url'] = site_url().'/adminlessons/index/'.$this->input->post('course_id', TRUE);
 		} else {
 			$data['danger'] = validation_errors('<br>');
 		}
@@ -84,7 +84,7 @@ class AdminLessons extends CI_Controller {
 			];
 			$this->lessons->update($where, $set);
 			$data['info'] = 'Se modifico la lección.';
-			$data['url'] = site_url().'/adminlessons/index';
+			$data['url'] = site_url().'/adminlessons/index/'.$this->input->post('course_id', TRUE);
 		} else {
 			$data['danger'] = validation_errors('<br>');
 		}

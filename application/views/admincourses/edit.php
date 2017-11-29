@@ -7,7 +7,7 @@
 	<body>
 		<div class="container mt-5">
 			<div class="card">
-				<div class="card-body bg-dark text-white">
+				<div class="card-body bg-light border">
 					<h1 class="text-center">Editar curso</h1>
 					<?= form_open('admincourses/proEdit',['id' => 'formCreate', 'class' => 'container was-validated']); ?>
 					<input type="hidden" id="course_id" value="<?= $course->course_id ?>">

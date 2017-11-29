@@ -1,5 +1,5 @@
 <div class="container">
-	<div class="card bg-dark text-white">
+	<div class="card bg-light border">
 		<div class="card-body">
 			<h1 class="text-center">Datos del usuario</h1>
 			<?= form_open('user/proEdit',['id' => 'formEditUser', 'class' => 'container was-validated']); ?>
@@ -20,7 +20,7 @@
 				<input type="text" class="form-control" disabled value="<?= $user->user_email ?>" id="u_e">
 			</div>
 			<div class="text-center">
-				<button type="submit" id="editUser" class="btn btn-info disabled" disabled>Guardar</button>
+				<button type="submit" id="editUser" class="btn btn-warning disabled" disabled>Editar</button>
 				<button id="cancelEdit" class="btn btn-danger disabled" disabled>Cancelar</button>
 			</div>
 			<?= form_close(); ?>

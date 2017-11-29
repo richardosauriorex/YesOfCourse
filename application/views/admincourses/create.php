@@ -7,7 +7,7 @@
 	<body>
 		<div class="container mt-5">
 			<div class="card mb-5">
-				<div class="card-body bg-dark text-white">
+				<div class="card-body bg-light border">
 					<h1 class="text-center">Crear curso</h1>
 					<?= form_open('admincourses/proCreate',['id' => 'formCreate', 'class' => 'container was-validated']); ?>
 					<div class="form-group">

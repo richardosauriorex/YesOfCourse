@@ -70,7 +70,7 @@
 </div>
 <div class="modal fade mt-5" id="alertRules" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-lg">
-		<div class="modal-content bg-dark text-white">
+		<div class="modal-content bg-light border">
 			<div class="modal-body">
 				<div class="text-right">
 					<button type="button" class="btn btn-dark" data-dismiss="modal"><i class="fa fa-close"></i></button>

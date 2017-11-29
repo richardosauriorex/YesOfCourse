@@ -9,8 +9,8 @@
 <link rel="stylesheet" href="<?= base_url()."vendor/quill/dist/quill.snow.css"; ?>">
 <link rel="stylesheet" href="<?= base_url().'assets/css/custom.css';?>">
 <!-- begin menu -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-	<a class="navbar-brand" href="#">YesOfCourse</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-success">
+	<a class="navbar-brand" href="<?= site_url() ?>">YesOfCourse</a>
 	<!-- add collapsable menu -->
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 	<span class="navbar-toggler-icon"></span>
@@ -20,33 +20,33 @@
 		<ul class="navbar-nav ml-auto">
 			<?php if (!$this->session->has_userdata('user')): ?>
 			<li class="nav-item">
-				<a class="btn btn-primary btn-block" href="<?php echo site_url().'/login/';?>">Iniciar sesión</a>
+				<a class="nav-link active" href="<?php echo site_url().'/login/';?>">Iniciar sesión</a>
 			</li>
 			<li class="nav-item">
-				<a class="btn btn-success btn-block" href="<?php echo site_url().'/register/';?>">Registrarse</a>
+				<a class="nav-link active" href="<?php echo site_url().'/register/';?>">Registrarse</a>
 			</li>
 			<li class="nav-item">
-				<a class="btn btn-warning btn-block" href="<?php echo site_url().'/help/';?>">Ayuda</a>
+				<a class="nav-link active" href="<?php echo site_url().'/help/';?>">Ayuda</a>
 			</li>
 			<?php endif ?>
 			<?php if ($this->session->has_userdata('user')): ?>
 			<li class="nav-item">
-				<a class="btn btn-primary btn-block" href="<?= site_url().'/user/' ?>">Perfil</a>
+				<a class="nav-link active" href="<?= site_url().'/user/' ?>">Perfil</a>
 			</li>
 			<li class="nav-item">
-				<a class="btn btn-success btn-block" href="<?= site_url().'/admincourses/' ?>">Administrar cursos</a>
+				<a class="nav-link active" href="<?= site_url().'/admincourses/' ?>">Administrar cursos</a>
 			</li>
 			<li class="nav-item">
-				<a class="btn btn-warning btn-block" href="<?= site_url().'/inscription/' ?>">Inscripciones</a>
+				<a class="nav-link active" href="<?= site_url().'/inscription/' ?>">Inscripciones</a>
 			</li>
 			<li class="nav-item">
 				<?= form_open('user/close_session',['id' => 'formClose']); ?>
-				<button class="btn btn-warning btn-block">Cerrar Sesión</button>
+				<a href class="nav-link active" id="close_session">Cerrar Sesión</a>
 				<?= form_close(); ?>
 			</li>
 			<?php endif ?>
 			<li class="nav-item">
-				<a class="btn btn-danger btn-block" href="<?= site_url().'/main/search';?>"><i class="fa fa-search"></i> Buscar</a>
+				<a class="nav-link active" href="<?= site_url().'/main/search';?>"><i class="fa fa-search"></i> Buscar</a>
 			</li>
 		</ul>
 	</div>
@@ -55,12 +55,13 @@
 <!-- end menu -->
 <script>
 	$(document).ready(function() {
-		var closer = $('#formClose');
-		closer.on('submit', function(event) {
+		var closer = $('#close_session');
+		closer.on('click', function(event) {
 			event.preventDefault();
 			/* Act on the event */
 			var data = {};
-			var url = closer.attr('action');
+			var url = $('#formClose').attr('action');
+			console.log(url);
 			alertWarning(function(w){
 			if(w == true){
 			request_ajax(url,data,function(response){
