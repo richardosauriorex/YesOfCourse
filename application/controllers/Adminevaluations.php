@@ -124,11 +124,19 @@ class AdminEvaluations extends CI_Controller {
 
 	public function deleteEvaluation()
 	{
-		
+		$data = [];
+		$data['csrf'] = $this->security->get_csrf_hash();
+		$data['response'] = $this->evaluations->delete(['evaluation_id' => $this->input->post('evaluation_id', TRUE), 'lesson_id' => $this->input->post('lesson_id', TRUE)]);
+		$data['success'] = 'Se elimino la evaluación';
+		echo json_encode($data);
 	}
 	public function deleteAnswer()
 	{
-		
+		$data = [];
+		$data['csrf'] = $this->security->get_csrf_hash();
+		$data['response'] = $this->answers->delete(['evaluation_id' => $this->input->post('evaluation_id', TRUE), 'answer_id' => $this->input->post('answer_id', TRUE)]);
+		$data['success'] = 'Se elimino la evaluación';
+		echo json_encode($data);
 	}
 
 	public function evalInfo()

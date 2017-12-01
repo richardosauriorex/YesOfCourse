@@ -30,7 +30,7 @@ class Main extends CI_Controller {
 				}	
 			} else {
 				/*send all courses that's same of the search*/
-				$result = $this->courses->like(['course_name' => $search, 'description' => $search],['status_id' => 'crs02', 'status_id' => 'crs01']);
+				$result = $this->courses->like(['course_name' => $search],['status_id' => 'crs02', 'status_id' => 'crs01']);
 				$data['quees'] = $result;
 				if (!empty($result)) {
 					$data['results'] = $result;	
@@ -41,15 +41,6 @@ class Main extends CI_Controller {
 			$data['userStatus'] = 'logged';
 		}
 		echo json_encode($data);
-	}
-	
-	public function up()
-	{
-		$this->load->library('migration');
-		if ($this->migration->version(13) === FALSE)
-			{
-            	show_error($this->migration->error_string());
-            }
 	}
 }
 

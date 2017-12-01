@@ -29,13 +29,21 @@ var quill = new Quill('#editor', {
 };
 /*handler image*/
 function imageHandler() {
-        var range = this.quill.getSelection();
-        /*obtain url*/
-        var value = prompt('What is the image URL');
-        this.quill.insertEmbed(range.index, 'image', value, Quill.sources.USER);
+        $('#gallery').modal('show');
 }
 /*funtion obtain list multimedia image*/
+function url_imagen(img){
+        var url = $(img).attr('src');
+        var range = this.quill.getSelection();
+        this.quill.insertEmbed(range.index, 'image', url, Quill.sources.USER);
+        $('#gallery').modal('show');
+}
 
+function url_ext(url){
+        var range = this.quill.getSelection();
+        this.quill.insertEmbed(range.index, 'image', url, Quill.sources.USER);
+        $('#gallery').modal('show');
+}
 /*function handler image*/
 function quillread(content = ''){
 var quillOnlyRead = new Quill('#quillRead',{modules:{toolbar:false},theme: 'snow'});

@@ -22,15 +22,15 @@ class Migration_Create_foreign_keys extends CI_Migration {
 		/*foreing key referenced categories table*/
 		$this->db->query('ALTER TABLE courses ADD FOREIGN KEY (category_id) REFERENCES categories(category_id)');
 		/*foreign key referenced courses table*/
-		$this->db->query('ALTER TABLE inscriptions ADD FOREIGN KEY (course_id) REFERENCES courses(course_id)');
-		$this->db->query('ALTER TABLE lessons ADD FOREIGN KEY (course_id) REFERENCES courses(course_id)');
+		$this->db->query('ALTER TABLE inscriptions ADD FOREIGN KEY (course_id) REFERENCES courses(course_id) ON DELETE CASCADE');
+		$this->db->query('ALTER TABLE lessons ADD FOREIGN KEY (course_id) REFERENCES courses(course_id) ON DELETE CASCADE');
 		/*foreign key referenced lessons table*/
-		$this->db->query('ALTER TABLE results ADD FOREIGN KEY (lesson_id) REFERENCES lessons(lesson_id)');
-		$this->db->query('ALTER TABLE evaluations ADD FOREIGN KEY (lesson_id) REFERENCES lessons(lesson_id)');
+		$this->db->query('ALTER TABLE results ADD FOREIGN KEY (lesson_id) REFERENCES lessons(lesson_id) ON DELETE CASCADE');
+		$this->db->query('ALTER TABLE evaluations ADD FOREIGN KEY (lesson_id) REFERENCES lessons(lesson_id) ON DELETE CASCADE');
 		/*foreign key referenced evaluations table*/
-		$this->db->query('ALTER TABLE answers ADD FOREIGN KEY (evaluation_id) REFERENCES evaluations(evaluation_id)');
+		$this->db->query('ALTER TABLE answers ADD FOREIGN KEY (evaluation_id) REFERENCES evaluations(evaluation_id) ON DELETE CASCADE');
 		/*foreign key referenced inscriptions table*/
-		$this->db->query('ALTER TABLE results ADD FOREIGN KEY (inscription_id) REFERENCES inscriptions(inscription_id)');
+		$this->db->query('ALTER TABLE results ADD FOREIGN KEY (inscription_id) REFERENCES inscriptions(inscription_id) ON DELETE CASCADE');
 
 	}
 

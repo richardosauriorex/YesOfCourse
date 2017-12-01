@@ -34,6 +34,9 @@
 				<a class="nav-link active" href="<?= site_url().'/user/' ?>">Perfil</a>
 			</li>
 			<li class="nav-item">
+				<a class="nav-link active" href="<?= site_url().'/adminmultimedia/' ?>">Administrar Multimedia</a>
+			</li>
+			<li class="nav-item">
 				<a class="nav-link active" href="<?= site_url().'/admincourses/' ?>">Administrar cursos</a>
 			</li>
 			<li class="nav-item">

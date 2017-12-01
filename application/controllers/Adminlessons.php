@@ -27,9 +27,11 @@ class AdminLessons extends CI_Controller {
 		/*view create lesson*/
 		$data = 
 		[
-			'course_id' => $course_id
+			'course_id' => $course_id,
+			'gallery' => $this->multimedia->get(['user_id' => $this->user->user_id])
 		];
 		$this->utils->layouts('adminlessons/create', $data);
+		$this->load->view('adminlessons/modal_gallery');
 	}
 
 	public function proCreate()
@@ -58,9 +60,11 @@ class AdminLessons extends CI_Controller {
 	{
 		$data = [
 			'lesson' => $this->lessons->get(['course_id'=> $course_id, 'lesson_id' => $lesson_id],1),
+			'gallery' => $this->multimedia->get(['user_id' => $this->user->user_id])
 		];
 		/*view modify lesson*/
 		$this->utils->layouts('adminlessons/edit',$data);
+		$this->load->view('adminlessons/modal_gallery');
 	}
 
 	public function proEdit()
@@ -93,7 +97,11 @@ class AdminLessons extends CI_Controller {
 
 	public function proDelete()
 	{
-		
+		$data = [];
+		$data['csrf'] = $this->security->get_csrf_hash();
+		$data['response'] = $this->lessons->delete(['lesson_id' => $this->input->post('lesson_id', TRUE), 'course_id' => $this->input->post('course_id', TRUE)]);
+		$data['success'] = 'Se elimino la lección';
+		echo json_encode($data);	
 	}
 	
 }

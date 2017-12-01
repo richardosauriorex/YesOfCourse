@@ -50,7 +50,7 @@
 								<div class="col-lg-6 col-md-6 col-xs-12 text-right">
 									<a href="<?php echo site_url().'/adminevaluations/index/'.$value->course_id.'/'.$value->lesson_id ?>" class="btn btn-success mb-1">Evaluación</a>
 									<a href="<?php echo site_url().'/adminlessons/edit/'.$value->course_id.'/'.$value->lesson_id ?>" class="btn btn-warning mb-1">Modificar</a>
-									<a href="" class="btn btn-danger mb-1">Eliminar</a>
+									<a onclick="deleteLesson(<?= $value->lesson_id ?>)" class="btn btn-danger mb-1">Eliminar</a>
 								</div>
 							</div>
 						</li>
@@ -61,3 +61,19 @@
 		</div>
 	</body>
 </html>
+<script>
+$(document).ready(function() {
+		
+});
+function deleteLesson(id_lesson = ''){
+	var url = "<?= site_url().'/adminlessons/proDelete'; ?>";
+	var data = {
+		course_id:'<?= $course->course_id ?>',
+		lesson_id: id_lesson
+	};
+	request_ajax(url, data, function(response){
+		alertSuccess(response.success);
+		setInterval(function(){ window.location = '<?= site_url().'/adminlessons/index/'?>'+data.course_id; }, 2000);
+	});
+	}
+</script>

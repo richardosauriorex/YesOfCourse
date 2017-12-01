@@ -7,7 +7,7 @@
 		<!-- Modal Crear Pregunta -->
 		<div class="modal fade" id="evaluationModify" role="dialog">
 			<div class="modal-dialog modal-lg" >
-				<div class="modal-content bg-dark text-white">
+				<div class="modal-content bg-light">
 					<!-- Cuerpo del modal -->
 					<div class="modal-body">
 						<div class="container">
@@ -55,7 +55,8 @@
 					alertDanger(response.danger);
 				}
 			});
-
+			$('#evaluationModify').modal('hide');
+			setInterval(function(){ window.location = '<?= site_url().'/adminevaluations/index/'.$course_id.'/'.$lesson->lesson_id?>'}, 2000);
 		});
 	});
 </script>

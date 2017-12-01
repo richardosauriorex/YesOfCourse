@@ -7,7 +7,7 @@
 		<!-- Modal Crear Pregunta -->
 		<div class="modal fade" id="answerCreate" role="dialog">
 			<div class="modal-dialog modal-lg" >
-				<div class="modal-content bg-dark text-white">
+				<div class="modal-content bg-light">
 					<!-- Cuerpo del modal -->
 					<div class="modal-body">
 						<div class="container">
@@ -68,8 +68,6 @@
 				'status_id': $('#nTipoRespuesta option:selected').val(),
 				'evaluation_id': $('#eval_id').val()
 			};
-			console.log(data);
-			console.log(url);
 			$('#nRespuesta').val('');
 			request_ajax(url, data, function(response)
 			{
@@ -81,8 +79,10 @@
 					alertDanger(response.danger);
 				}
 			});
+			setInterval(function(){ window.location = '<?= site_url().'/adminevaluations/index/'.$course_id.'/'.$lesson->lesson_id?>'}, 2000);
 		});
 	});
+
 	function createAnswer(eval_id = ''){
 		$('#eval_id').val(eval_id);
 		$('#answerCreate').modal('show');

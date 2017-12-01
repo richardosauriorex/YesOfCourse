@@ -7,7 +7,7 @@
 		<!-- Modal Crear Pregunta -->
 		<div class="modal fade" id="evaluationCreate" role="dialog">
 			<div class="modal-dialog modal-lg" >
-				<div class="modal-content bg-dark text-white">
+				<div class="modal-content bg-light">
 					<!-- Cuerpo del modal -->
 					<div class="modal-body">
 						<div class="container">
@@ -27,7 +27,7 @@
 								<div class="row">
 									<div class="col">
 										<i class="fa fa-comment" aria-hidden="true"></i>
-										<label for="nRespuesta">Respuesta</label>
+										<label for="nRespuesta">Respuesta (Correcta)</label>
 										<input type="text" class="form-control" id="nRespuesta" placeholder="Respuesta" required>
 									</div>
 								</div>
@@ -72,6 +72,7 @@
 					alertDanger(response.danger);
 				}
 			});
+			setInterval(function(){ window.location = '<?= site_url().'/adminevaluations/index/'.$course_id?>'+'/'+data.lesson_id }, 2000);
 		});
 	});
 </script>

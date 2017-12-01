@@ -7,7 +7,7 @@
 		<!-- Modal Crear Pregunta -->
 		<div class="modal fade" id="answerModify" role="dialog">
 			<div class="modal-dialog modal-lg" >
-				<div class="modal-content bg-dark text-white">
+				<div class="modal-content bg-light">
 					<!-- Cuerpo del modal -->
 					<div class="modal-body">
 						<div class="container">
@@ -33,7 +33,7 @@
 											<i class="fa fa-check" aria-hidden="true"></i>
 											<label for="eTipoRespuesta" class="">Tipo de respuesta</label>
 											<select class="form-control" id="eTipoRespuesta" required>
-												<option selected disabled>Elige una opción</option>
+												<option disabled>Elige una opción</option>
 												<option value="ans00">Correcto</option>
 												<option value="ans01">Incorrecto</option>
 											</select>
@@ -74,6 +74,8 @@
 					alertDanger(response.danger);
 				}
 			});
+			$('#answerModify').modal('hide');
+			setInterval(function(){ window.location = '<?= site_url().'/adminevaluations/index/'.$course_id.'/'.$lesson->lesson_id?>'}, 2000);
 		});
 	});
 </script>

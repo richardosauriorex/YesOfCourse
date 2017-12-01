@@ -61,8 +61,10 @@
 												<h6><?php echo $val->answer ?></h6>
 											</div>
 											<div class="col-lg-4 col-md-5 col-xs-12 text-right">
-												<a class="btn btn-warning mt-1" onclick="editAns(<?= $val->answer_id ?>)">Modificar</a>
-												<a class="btn btn-danger mt-1 text-white">Eliminar</a>
+												<?php $status = ($val->status_id == 'ans00') ? 'Correcta' : 'Incorrecta';?>
+												<a class="btn btn-outline-dark"><?= $status ?></a>
+												<a class="btn btn-warning text-white mt-1" onclick="editAns(<?= $val->answer_id ?>)">Modificar</a>
+												<a class="btn btn-danger mt-1 text-white" onclick="deleteAns(<?= $val->answer_id ?> , <?= $value->evaluation_id ?>)">Eliminar</a>
 											</div>
 										</div>
 									</li>
@@ -78,10 +80,6 @@
 	</body>
 </html>
 <script>
-	$(document).ready(function($) {
-			
-	});
-
 	function editEval(eval_id = ''){
 		var url = "<?= site_url().'/adminevaluations/evalInfo' ?>";
 		var data = {
@@ -105,5 +103,37 @@
 			$('#eRespuesta').val(response.ans.answer);
 		});
 		$('#answerModify').modal('show');
+	}
+
+	function deleteEval(id_eval = ''){
+		var url = "<?= site_url().'/adminevaluations/deleteEvaluation/';?>";
+		var data = {
+			evaluation_id: id_eval,
+			lesson_id: '<?= $lesson->lesson_id ?>'
+		};
+		request_ajax(url, data, function(response){
+			if (response.success != undefined) {
+				alertSuccess(response.success);
+			}else{
+				alertDanger(response.danger);
+			}
+		});
+		setInterval(function(){ window.location = '<?= site_url().'/adminevaluations/index/'.$course_id.'/'.$lesson->lesson_id?>'}, 2000);
+	}
+
+	function deleteAns(id_ans = '', eval_id = ''){
+		var url = "<?= site_url().'/adminevaluations/deleteAnswer/';?>";
+		var data = {
+			evaluation_id: eval_id,
+			answer_id: id_ans
+		};
+		request_ajax(url, data, function(response){
+			if (response.success != undefined) {
+				alertSuccess(response.success);
+			}else{
+				alertDanger(response.danger);
+			}
+		});
+		setInterval(function(){ window.location = '<?= site_url().'/adminevaluations/index/'.$course_id.'/'.$lesson->lesson_id?>'}, 2000);
 	}
 </script>
