@@ -36,6 +36,7 @@
 												<option selected disabled>Elige una opción</option>
 												<option value="ans00">Correcto</option>
 												<option value="ans01">Incorrecto</option>
+												<option value="ans02">Correcto/Incorrecto</option>
 											</select>
 										</div>
 									</div>
@@ -49,7 +50,7 @@
 							<?= form_close(); ?>
 						</div>
 					</div>
-					
+
 				</div>
 			</div>
 		</div>
